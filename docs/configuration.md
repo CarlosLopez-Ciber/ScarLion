@@ -2,72 +2,112 @@
 title: Configuration
 ---
 
-Quartz is meant to be extremely configurable, even if you don't know any coding. Most of the configuration you should need can be done by just editing `quartz.config.ts` or changing [[layout|the layout]] in `quartz.layout.ts`.
+Quartz está diseñado para ser extremadamente configurable, incluso si no sabes programar. La mayor parte de la configuración que necesitarás puede realizarse simplemente editando `quartz.config.ts` o modificando [[layout|el layout]] en `quartz.layout.ts`.
 
-> [!tip]
-> If you edit Quartz configuration using a text-editor that has TypeScript language support like VSCode, it will warn you when you you've made an error in your configuration, helping you avoid configuration mistakes!
+> [!tip]  
+> Si editas la configuración de Quartz usando un editor de texto con soporte para TypeScript como VSCode, este te avisará cuando hayas cometido un error en tu configuración, ayudándote a evitar errores de configuración.
 
-The configuration of Quartz can be broken down into two main parts:
+La configuración de Quartz puede dividirse en dos partes principales:
 
-```ts title="quartz.config.ts"
+```ts
 const config: QuartzConfig = {
   configuration: { ... },
   plugins: { ... },
 }
 ```
 
-## General Configuration
+## Configuración General
 
-This part of the configuration concerns anything that can affect the whole site. The following is a list breaking down all the things you can configure:
+Esta parte de la configuración abarca todo lo que puede afectar al sitio completo. A continuación, se detalla todo lo que puedes configurar:
 
-- `pageTitle`: title of the site. This is also used when generating the [[RSS Feed]] for your site.
-- `pageTitleSuffix`: a string added to the end of the page title. This only applies to the browser tab title, not the title shown at the top of the page.
-- `enableSPA`: whether to enable [[SPA Routing]] on your site.
-- `enablePopovers`: whether to enable [[popover previews]] on your site.
-- `analytics`: what to use for analytics on your site. Values can be
-  - `null`: don't use analytics;
-  - `{ provider: 'google', tagId: '<your-google-tag>' }`: use Google Analytics;
-  - `{ provider: 'plausible' }` (managed) or `{ provider: 'plausible', host: 'https://<your-plausible-host>' }` (self-hosted, make sure to include the `https://` protocol prefix): use [Plausible](https://plausible.io/);
-  - `{ provider: 'umami', host: '<your-umami-host>', websiteId: '<your-umami-website-id>' }`: use [Umami](https://umami.is/);
-  - `{ provider: 'goatcounter', websiteId: 'my-goatcounter-id' }` (managed) or `{ provider: 'goatcounter', websiteId: 'my-goatcounter-id', host: 'my-goatcounter-domain.com', scriptSrc: 'https://my-url.to/counter.js' }` (self-hosted) use [GoatCounter](https://goatcounter.com);
-  - `{ provider: 'posthog', apiKey: '<your-posthog-project-apiKey>', host: '<your-posthog-host>' }`: use [Posthog](https://posthog.com/);
-  - `{ provider: 'tinylytics', siteId: '<your-site-id>' }`: use [Tinylytics](https://tinylytics.app/);
-  - `{ provider: 'cabin' }` or `{ provider: 'cabin', host: 'https://cabin.example.com' }` (custom domain): use [Cabin](https://withcabin.com);
-  - `{provider: 'clarity', projectId: '<your-clarity-id-code' }`: use [Microsoft clarity](https://clarity.microsoft.com/). The project id can be found on top of the overview page.
-  - `{ provider: 'matomo', siteId: '<your-matomo-id-code', host: 'matomo.example.com' }`: use [Matomo](https://matomo.org/), without protocol.
-  - `{ provider: 'vercel' }`: use [Vercel Web Analytics](https://vercel.com/docs/concepts/analytics).
-  - `{ provider: 'rybbit', siteId: 'my-rybbit-id' }` (managed) or `{ provider: 'rybbit', siteId: 'my-rybbit-id', host: 'my-rybbit-domain.com' }` (self-hosted) use [Rybbit](https://rybbit.com);
-- `locale`: used for [[i18n]] and date formatting
-- `baseUrl`: this is used for sitemaps and RSS feeds that require an absolute URL to know where the canonical 'home' of your site lives. This is normally the deployed URL of your site (e.g. `quartz.jzhao.xyz` for this site). Do not include the protocol (i.e. `https://`) or any leading or trailing slashes.
-  - This should also include the subpath if you are [[hosting]] on GitHub pages without a custom domain. For example, if my repository is `jackyzha0/quartz`, GitHub pages would deploy to `https://jackyzha0.github.io/quartz` and the `baseUrl` would be `jackyzha0.github.io/quartz`.
-  - Note that Quartz 4 will avoid using this as much as possible and use relative URLs whenever it can to make sure your site works no matter _where_ you end up actually deploying it.
-- `ignorePatterns`: a list of [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) patterns that Quartz should ignore and not search through when looking for files inside the `content` folder. See [[private pages]] for more details.
-- `defaultDateType`: whether to use created, modified, or published as the default date to display on pages and page listings.
-- `theme`: configure how the site looks.
-  - `cdnCaching`: if `true` (default), use Google CDN to cache the fonts. This will generally be faster. Disable (`false`) this if you want Quartz to download the fonts to be self-contained.
-  - `typography`: what fonts to use. Any font available on [Google Fonts](https://fonts.google.com/) works here.
-    - `title`: font for the title of the site (optional, same as `header` by default)
-    - `header`: font to use for headers
-    - `code`: font for inline and block quotes
-    - `body`: font for everything
-  - `colors`: controls the theming of the site.
-    - `light`: page background
-    - `lightgray`: borders
-    - `gray`: graph links, heavier borders
-    - `darkgray`: body text
-    - `dark`: header text and icons
-    - `secondary`: link colour, current [[graph view|graph]] node
-    - `tertiary`: hover states and visited [[graph view|graph]] nodes
-    - `highlight`: internal link background, highlighted text, [[syntax highlighting|highlighted lines of code]]
-    - `textHighlight`: markdown highlighted text background
+- `pageTitle`: título del sitio. También se utiliza al generar el [[RSS Feed]] de tu sitio.
+    
+- `pageTitleSuffix`: cadena que se añade al final del título de la página. Solo se aplica al título de la pestaña del navegador, no al título mostrado en la parte superior de la página.
+    
+- `enableSPA`: habilita o deshabilita [[SPA Routing]] en tu sitio.
+    
+- `enablePopovers`: habilita o deshabilita las [[popover previews]] en tu sitio.
+    
+- `analytics`: define qué servicio de analítica utilizar en tu sitio. Los valores pueden ser:
+    
+    - `null`: no usar analítica;
+        
+    - `{ provider: 'google', tagId: '<tu-google-tag>' }`: usar Google Analytics;
+        
+    - `{ provider: 'plausible' }` (gestionado) o `{ provider: 'plausible', host: 'https://<tu-plausible-host>' }` (autoalojado, asegúrate de incluir el prefijo `https://`): usar [Plausible](https://plausible.io/);
+        
+    - `{ provider: 'umami', host: '<tu-umami-host>', websiteId: '<tu-umami-website-id>' }`: usar [Umami](https://umami.is/);
+        
+    - `{ provider: 'goatcounter', websiteId: 'mi-goatcounter-id' }` (gestionado) o `{ provider: 'goatcounter', websiteId: 'mi-goatcounter-id', host: 'mi-dominio-goatcounter.com', scriptSrc: 'https://mi-url.to/counter.js' }` (autoalojado): usar [GoatCounter](https://goatcounter.com/);
+        
+    - `{ provider: 'posthog', apiKey: '<tu-posthog-project-apiKey>', host: '<tu-posthog-host>' }`: usar [Posthog](https://posthog.com/);
+        
+    - `{ provider: 'tinylytics', siteId: '<tu-site-id>' }`: usar [Tinylytics](https://tinylytics.app/);
+        
+    - `{ provider: 'cabin' }` o `{ provider: 'cabin', host: 'https://cabin.example.com' }` (dominio personalizado): usar [Cabin](https://withcabin.com/);
+        
+    - `{ provider: 'clarity', projectId: '<tu-clarity-id-code>' }`: usar [Microsoft Clarity](https://clarity.microsoft.com/). El ID del proyecto se encuentra en la parte superior de la página de resumen.
+        
+    - `{ provider: 'matomo', siteId: '<tu-matomo-id-code>', host: 'matomo.example.com' }`: usar [Matomo](https://matomo.org/), sin protocolo.
+        
+    - `{ provider: 'vercel' }`: usar [Vercel Web Analytics](https://vercel.com/docs/concepts/analytics).
+        
+    - `{ provider: 'rybbit', siteId: 'mi-rybbit-id' }` (gestionado) o `{ provider: 'rybbit', siteId: 'mi-rybbit-id', host: 'mi-dominio-rybbit.com' }` (autoalojado): usar [Rybbit](https://rybbit.com/);
+        
+- `locale`: se utiliza para [[i18n]] y el formateo de fechas.
+    
+- `baseUrl`: se usa para mapas del sitio (sitemaps) y feeds RSS que requieren una URL absoluta para identificar el “hogar” canónico de tu sitio. Normalmente es la URL donde está desplegado tu sitio (por ejemplo, `quartz.jzhao.xyz` para este sitio). No incluyas el protocolo (es decir, `https://`) ni barras iniciales o finales.
+    
+    - También debe incluir el subpath si estás [[hosting]] en GitHub Pages sin un dominio personalizado. Por ejemplo, si mi repositorio es `jackyzha0/quartz`, GitHub Pages lo desplegaría en `https://jackyzha0.github.io/quartz` y el `baseUrl` sería `jackyzha0.github.io/quartz`.
+        
+    - Ten en cuenta que Quartz 4 intentará evitar usar esta propiedad siempre que sea posible y utilizará URLs relativas para asegurarse de que tu sitio funcione sin importar dónde lo despliegues.
+        
+- `ignorePatterns`: lista de patrones [glob](https://en.wikipedia.org/wiki/Glob_\(programming\)) que Quartz debe ignorar y no examinar al buscar archivos dentro de la carpeta `content`. Consulta [[private pages]] para más detalles.
+    
+- `defaultDateType`: define si se debe usar la fecha de creación, modificación o publicación como fecha predeterminada a mostrar en las páginas y listados.
+    
+- `theme`: configura la apariencia del sitio.
+    
+    - `cdnCaching`: si es `true` (por defecto), usa Google CDN para almacenar en caché las fuentes. Generalmente será más rápido. Desactívalo (`false`) si quieres que Quartz descargue las fuentes para que el sitio sea completamente autónomo.
+        
+    - `typography`: define qué fuentes utilizar. Cualquier fuente disponible en [Google Fonts](https://fonts.google.com/) funciona aquí.
+        
+        - `title`: fuente para el título del sitio (opcional, por defecto es la misma que `header`)
+            
+        - `header`: fuente para los encabezados
+            
+        - `code`: fuente para código en línea y bloques
+            
+        - `body`: fuente para el contenido general
+            
+    - `colors`: controla la tematización del sitio.
+        
+        - `light`: fondo de la página
+            
+        - `lightgray`: bordes
+            
+        - `gray`: enlaces del grafo, bordes más marcados
+            
+        - `darkgray`: texto del cuerpo
+            
+        - `dark`: texto de encabezados e íconos
+            
+        - `secondary`: color de enlaces, nodo actual en [[graph view|graph]]
+            
+        - `tertiary`: estados hover y nodos visitados en [[graph view|graph]]
+            
+        - `highlight`: fondo de enlaces internos, texto resaltado, [[syntax highlighting|líneas de código resaltadas]]
+            
+        - `textHighlight`: fondo del texto resaltado en Markdown
+
 
 ## Plugins
 
-You can think of Quartz plugins as a series of transformations over content.
+Puedes pensar en los plugins de Quartz como una serie de transformaciones aplicadas sobre el contenido.
 
 ![[quartz transform pipeline.png]]
 
-```ts title="quartz.config.ts"
+```ts
 plugins: {
   transformers: [...],
   filters: [...],
@@ -75,18 +115,21 @@ plugins: {
 }
 ```
 
-- [[tags/plugin/transformer|Transformers]] **map** over content (e.g. parsing frontmatter, generating a description)
-- [[tags/plugin/filter|Filters]] **filter** content (e.g. filtering out drafts)
-- [[tags/plugin/emitter|Emitters]] **reduce** over content (e.g. creating an RSS feed or pages that list all files with a specific tag)
+- [[tags/plugin/transformer|Transformers]] **mapean** el contenido (por ejemplo, analizando el _frontmatter_ o generando una descripción).
+    
+- [[tags/plugin/filter|Filters]] **filtran** el contenido (por ejemplo, excluyendo borradores).
+    
+- [[tags/plugin/emitter|Emitters]] **reducen** el contenido (por ejemplo, creando un feed RSS o páginas que listan todos los archivos con una etiqueta específica).
+    
 
-You can customize the behaviour of Quartz by adding, removing and reordering plugins in the `transformers`, `filters` and `emitters` fields.
+Puedes personalizar el comportamiento de Quartz agregando, eliminando y reordenando plugins en los campos `transformers`, `filters` y `emitters`.
 
-> [!note]
-> Each node is modified by every transformer _in order_. Some transformers are position sensitive, so you may need to pay particular attention to whether they need to come before or after certain other plugins.
+> [!note]  
+> Cada nodo es modificado por cada transformer _en orden_. Algunos transformers son sensibles a la posición, por lo que puede que necesites prestar especial atención a si deben colocarse antes o después de ciertos otros plugins.
 
-You should take care to add the plugin to the right entry corresponding to its plugin type. For example, to add the [[ExplicitPublish]] plugin (a [[tags/plugin/filter|Filter]]), you would add the following line:
+Debes asegurarte de agregar el plugin en la sección correspondiente según su tipo. Por ejemplo, para agregar el plugin [[ExplicitPublish]] (un [[tags/plugin/filter|Filter]]), deberías añadir la siguiente línea:
 
-```ts title="quartz.config.ts"
+```ts
 filters: [
   ...
   Plugin.ExplicitPublish(),
@@ -94,28 +137,30 @@ filters: [
 ],
 ```
 
-To remove a plugin, you should remove all occurrences of it in the `quartz.config.ts`.
+Para eliminar un plugin, debes borrar todas sus apariciones en `quartz.config.ts`.
 
-To customize plugins further, some plugins may also have their own configuration settings that you can pass in. If you do not pass in a configuration, the plugin will use its default settings.
+Para personalizar aún más los plugins, algunos permiten recibir opciones de configuración propias. Si no proporcionas una configuración, el plugin utilizará sus valores predeterminados.
 
-For example, the [[plugins/Latex|Latex]] plugin allows you to pass in a field specifying the `renderEngine` to choose between Katex and MathJax.
+Por ejemplo, el plugin [[plugins/Latex|Latex]] permite especificar el campo `renderEngine` para elegir entre Katex y MathJax:
 
-```ts title="quartz.config.ts"
+```ts
 transformers: [
-  Plugin.FrontMatter(), // use default options
-  Plugin.Latex({ renderEngine: "katex" }), // set some custom options
+  Plugin.FrontMatter(), // usa opciones por defecto
+  Plugin.Latex({ renderEngine: "katex" }), // establece opciones personalizadas
 ]
 ```
 
-Some plugins are included by default in the [`quartz.config.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz.config.ts), but there are more available.
+Algunos plugins están incluidos por defecto en [`quartz.config.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz.config.ts), pero hay más disponibles.
 
-You can see a list of all plugins and their configuration options [[tags/plugin|here]].
+Puedes ver una lista de todos los plugins y sus opciones de configuración [[tags/plugin|aquí]].
 
-If you'd like to make your own plugins, see the [[making plugins|making custom plugins]] guide.
+Si deseas crear tus propios plugins, consulta la guía [[making plugins|creación de plugins personalizados]].
 
-## Fonts
+---
 
-Fonts can be specified as a `string` or a `FontSpecification`:
+## Fuentes
+
+Las fuentes pueden especificarse como un `string` o como una `FontSpecification`:
 
 ```ts
 // string

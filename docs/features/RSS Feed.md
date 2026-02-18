@@ -1,10 +1,11 @@
-Quartz emits an RSS feed for all the content on your site by generating an `index.xml` file that RSS readers can subscribe to. Because of the RSS spec, this requires the `baseUrl` property in your [[configuration]] to be set properly for RSS readers to pick it up properly.
+Quartz genera un feed RSS para todo el contenido de tu sitio mediante la creación de un archivo `index.xml` al que los lectores RSS pueden suscribirse. Debido a la especificación de RSS, es necesario que la propiedad `baseUrl` en tu [[configuration]] esté correctamente configurada para que los lectores RSS puedan detectarlo adecuadamente.
 
-> [!info]
-> After deploying, the generated RSS link will be available at `https://${baseUrl}/index.xml` by default.
->
-> The `index.xml` path can be customized by passing the `rssSlug` option to the [[ContentIndex]] plugin.
+> [!info]  
+> Después de desplegar el sitio, el enlace RSS generado estará disponible por defecto en `https://${baseUrl}/index.xml`.
+> 
+> La ruta `index.xml` puede personalizarse pasando la opción `rssSlug` al plugin [[ContentIndex]].
 
-## Configuration
+## Configuración
 
-This functionality is provided by the [[ContentIndex]] plugin. See the plugin page for customization options.
+Esta funcionalidad es proporcionada por el plugin [[ContentIndex]]. Consulta la página del plugin para ver las opciones de personalización disponibles.
+

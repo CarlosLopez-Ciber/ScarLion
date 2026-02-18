@@ -3,15 +3,22 @@ title: Recent Notes
 tags: component
 ---
 
-Quartz can generate a list of recent notes based on some filtering and sorting criteria. Though this component isn't included in any [[layout]] by default, you can add it by using `Component.RecentNotes` in `quartz.layout.ts`.
+Quartz puede generar una lista de notas recientes basándose en ciertos criterios de filtrado y ordenamiento. Aunque este componente no está incluido en ningún [[layout]] por defecto, puedes agregarlo utilizando `Component.RecentNotes` en `quartz.layout.ts`.
 
-## Customization
+## Personalización
 
-- Changing the title from "Recent notes": pass in an additional parameter to `Component.RecentNotes({ title: "Recent writing" })`
-- Changing the number of recent notes: pass in an additional parameter to `Component.RecentNotes({ limit: 5 })`
-- Display the note's tags (defaults to true): `Component.RecentNotes({ showTags: false })`
-- Show a 'see more' link: pass in an additional parameter to `Component.RecentNotes({ linkToMore: "tags/components" })`. This field should be a full slug to a page that exists.
-- Customize filtering: pass in an additional parameter to `Component.RecentNotes({ filter: someFilterFunction })`. The filter function should be a function that has the signature `(f: QuartzPluginData) => boolean`.
-- Customize sorting: pass in an additional parameter to `Component.RecentNotes({ sort: someSortFunction })`. By default, Quartz will sort by date and then tie break lexographically. The sort function should be a function that has the signature `(f1: QuartzPluginData, f2: QuartzPluginData) => number`. See `byDateAndAlphabetical` in `quartz/components/PageList.tsx` for an example.
-- Component: `quartz/components/RecentNotes.tsx`
-- Style: `quartz/components/styles/recentNotes.scss`
+- Cambiar el título de "Recent notes": pasa un parámetro adicional a `Component.RecentNotes({ title: "Recent writing" })`
+    
+- Cambiar el número de notas recientes: pasa un parámetro adicional a `Component.RecentNotes({ limit: 5 })`
+    
+- Mostrar las etiquetas (por defecto es `true`): `Component.RecentNotes({ showTags: false })`
+    
+- Mostrar un enlace de “ver más”: pasa un parámetro adicional a `Component.RecentNotes({ linkToMore: "tags/components" })`. Este campo debe ser un _slug_ completo que corresponda a una página existente.
+    
+- Personalizar el filtrado: pasa un parámetro adicional a `Component.RecentNotes({ filter: someFilterFunction })`. La función de filtrado debe tener la firma `(f: QuartzPluginData) => boolean`.
+    
+- Personalizar el ordenamiento: pasa un parámetro adicional a `Component.RecentNotes({ sort: someSortFunction })`. Por defecto, Quartz ordena por fecha y, en caso de empate, utiliza un criterio lexicográfico. La función de ordenamiento debe tener la firma `(f1: QuartzPluginData, f2: QuartzPluginData) => number`. Consulta `byDateAndAlphabetical` en `quartz/components/PageList.tsx` como ejemplo.
+    
+- Componente: `quartz/components/RecentNotes.tsx`
+    
+- Estilo: `quartz/components/styles/recentNotes.scss`

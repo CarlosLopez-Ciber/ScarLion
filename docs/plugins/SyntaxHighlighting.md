@@ -4,20 +4,26 @@ tags:
   - plugin/transformer
 ---
 
-This plugin is used to add syntax highlighting to code blocks in Quartz. See [[syntax highlighting]] for more information.
+Este plugin se utiliza para agregar resaltado de sintaxis a los bloques de código en Quartz. Consulta [[syntax highlighting]] para obtener más información.
 
-> [!note]
-> For information on how to add, remove or configure plugins, see the [[configuration#Plugins|Configuration]] page.
+> [!note]  
+> Para información sobre cómo agregar, eliminar o configurar plugins, consulta la página [[configuration#Plugins|Configuration]].
 
-This plugin accepts the following configuration options:
+Este plugin acepta las siguientes opciones de configuración:
 
-- `theme`: a separate id of one of the [themes bundled with Shikiji](https://shikiji.netlify.app/themes). One for light mode and one for dark mode. Defaults to `theme: { light: "github-light", dark: "github-dark" }`.
-- `keepBackground`: If set to `true`, the background of the Shikiji theme will be used. With `false` (default) the Quartz theme color for background will be used instead.
+- `theme`: identificador de uno de los [temas incluidos con Shikiji](https://shikiji.netlify.app/themes). Se define uno para el modo claro y otro para el modo oscuro.  
+    Por defecto:  
+    `theme: { light: "github-light", dark: "github-dark" }`.
+    
+- `keepBackground`: si se establece en `true`, se utilizará el fondo del tema de Shikiji. Con `false` (valor por defecto), se utilizará en su lugar el color de fondo del tema de Quartz.
+    
 
-In addition, you can further override the colours in the `quartz/styles/syntax.scss` file.
+Además, puedes sobrescribir los colores en el archivo `quartz/styles/syntax.scss`.
 
 ## API
 
-- Category: Transformer
-- Function name: `Plugin.SyntaxHighlighting()`.
-- Source: [`quartz/plugins/transformers/syntax.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/transformers/syntax.ts).
+- Categoría: Transformer
+    
+- Nombre de la función: `Plugin.SyntaxHighlighting()`
+    
+- Código fuente: `quartz/plugins/transformers/syntax.ts` ([https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/transformers/syntax.ts](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/transformers/syntax.ts))
