@@ -25,7 +25,7 @@ const config: QuartzConfig = {
       typography: {
         header: "VT323",
         body: "VT323",
-        code: "IBM Plex Mono",
+        code: "VT323",
       },
       colors: {
         lightMode: {
