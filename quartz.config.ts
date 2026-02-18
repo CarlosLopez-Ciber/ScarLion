@@ -23,9 +23,9 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Germania One",
-        body: "Germania One",
-        code: "Germania One",
+        header: "Jersey 20",
+        body: "Jersey 20",
+        code: "Jersey 20",
       },
       colors: {
         lightMode: {
