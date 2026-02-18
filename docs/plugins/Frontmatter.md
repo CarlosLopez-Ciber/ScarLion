@@ -4,69 +4,120 @@ tags:
   - plugin/transformer
 ---
 
-This plugin parses the frontmatter of the page using the [gray-matter](https://github.com/jonschlinkert/gray-matter) library. See [[authoring content#Syntax]], [[Obsidian compatibility]] and [[OxHugo compatibility]] for more information.
+Este plugin analiza el _frontmatter_ de la página utilizando la biblioteca [gray-matter](https://github.com/jonschlinkert/gray-matter). Consulta [[authoring content#Syntax]], [[Obsidian compatibility]] y [[OxHugo compatibility]] para más información.
 
-> [!note]
-> For information on how to add, remove or configure plugins, see the [[configuration#Plugins|Configuration]] page.
+> [!note]  
+> Para obtener información sobre cómo agregar, eliminar o configurar plugins, consulta la página de [[configuration#Plugins|Configuration]].
 
-This plugin accepts the following configuration options:
+Este plugin acepta las siguientes opciones de configuración:
 
-- `delimiters`: the delimiters to use for the frontmatter. Can have one value (e.g. `"---"`) or separate values for opening and closing delimiters (e.g. `["---", "~~~"]`). Defaults to `"---"`.
-- `language`: the language to use for parsing the frontmatter. Can be `yaml` (default) or `toml`.
+- `delimiters`: delimitadores utilizados para el _frontmatter_. Puede tener un solo valor (por ejemplo, `"---"`) o valores distintos para el delimitador de apertura y cierre (por ejemplo, `["---", "~~~"]`). El valor predeterminado es `"---"`.
+    
+- `language`: lenguaje utilizado para analizar el _frontmatter_. Puede ser `yaml` (valor predeterminado) o `toml`.
+    
 
-> [!warning]
-> This plugin must not be removed, otherwise Quartz will break.
+> [!warning]  
+> Este plugin no debe eliminarse; de lo contrario, Quartz dejará de funcionar.
 
-## List
+---
 
-Quartz supports the following frontmatter:
+## Lista
+
+Quartz admite los siguientes campos de _frontmatter_:
 
 - title
-  - `title`
+    
+    - `title`
+        
 - description
-  - `description`
+    
+    - `description`
+        
 - permalink
-  - `permalink`
+    
+    - `permalink`
+        
 - comments
-  - `comments`
+    
+    - `comments`
+        
 - lang
-  - `lang`
+    
+    - `lang`
+        
 - publish
-  - `publish`
+    
+    - `publish`
+        
 - draft
-  - `draft`
+    
+    - `draft`
+        
 - enableToc
-  - `enableToc`
+    
+    - `enableToc`
+        
 - tags
-  - `tags`
-  - `tag`
+    
+    - `tags`
+        
+    - `tag`
+        
 - aliases
-  - `aliases`
-  - `alias`
+    
+    - `aliases`
+        
+    - `alias`
+        
 - cssclasses
-  - `cssclasses`
-  - `cssclass`
+    
+    - `cssclasses`
+        
+    - `cssclass`
+        
 - socialDescription
-  - `socialDescription`
+    
+    - `socialDescription`
+        
 - socialImage
-  - `socialImage`
-  - `image`
-  - `cover`
+    
+    - `socialImage`
+        
+    - `image`
+        
+    - `cover`
+        
 - created
-  - `created`
-  - `date`
+    
+    - `created`
+        
+    - `date`
+        
 - modified
-  - `modified`
-  - `lastmod`
-  - `updated`
-  - `last-modified`
+    
+    - `modified`
+        
+    - `lastmod`
+        
+    - `updated`
+        
+    - `last-modified`
+        
 - published
-  - `published`
-  - `publishDate`
-  - `date`
+    
+    - `published`
+        
+    - `publishDate`
+        
+    - `date`
+        
+
+---
 
 ## API
 
-- Category: Transformer
-- Function name: `Plugin.Frontmatter()`.
-- Source: [`quartz/plugins/transformers/frontmatter.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/transformers/frontmatter.ts).
+- **Categoría:** Transformer
+    
+- **Nombre de la función:** `Plugin.Frontmatter()`
+    
+- **Fuente:** [`quartz/plugins/transformers/frontmatter.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/transformers/frontmatter.ts)

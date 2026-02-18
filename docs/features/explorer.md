@@ -4,55 +4,64 @@ tags:
   - component
 ---
 
-Quartz features an explorer that allows you to navigate all files and folders on your site. It supports nested folders and is highly customizable.
+Quartz incluye un **explorador** que te permite navegar por todos los archivos y carpetas de tu sitio. Es compatible con carpetas anidadas y es altamente personalizable.
 
-By default, it shows all folders and files on your page. To display the explorer in a different spot, you can edit the [[layout]].
+De forma predeterminada, muestra todas las carpetas y archivos de tu sitio. Para mostrar el explorador en una ubicación diferente, puedes editar el [[layout]].
 
-Display names for folders get determined by the `title` frontmatter field in `folder/index.md` (more detail in [[authoring content | Authoring Content]]). If this file does not exist or does not contain frontmatter, the local folder name will be used instead.
+Los nombres visibles de las carpetas se determinan mediante el campo `title` del _frontmatter_ en `folder/index.md` (más detalles en [[authoring content | Creación de contenido]]).  
+Si este archivo no existe o no contiene _frontmatter_, se utilizará el nombre local de la carpeta.
 
-> [!info]
-> The explorer uses local storage by default to save the state of your explorer. This is done to ensure a smooth experience when navigating to different pages.
->
-> To clear/delete the explorer state from local storage, delete the `fileTree` entry (guide on how to delete a key from local storage in chromium based browsers can be found [here](https://docs.devolutions.net/kb/general-knowledge-base/clear-browser-local-storage/clear-chrome-local-storage/)). You can disable this by passing `useSavedState: false` as an argument.
+> [!info]  
+> El explorador utiliza **local storage** por defecto para guardar su estado. Esto garantiza una experiencia fluida al navegar entre páginas.
+> 
+> Para eliminar el estado guardado del explorador, borra la entrada `fileTree` del almacenamiento local (puedes encontrar una guía para navegadores basados en Chromium [aquí](https://docs.devolutions.net/kb/general-knowledge-base/clear-browser-local-storage/clear-chrome-local-storage/)).  
+> Puedes deshabilitar esta funcionalidad pasando `useSavedState: false` como argumento.
 
-## Customization
+---
 
-Most configuration can be done by passing in options to `Component.Explorer()`.
+## Personalización
 
-For example, here's what the default configuration looks like:
+La mayor parte de la configuración se realiza pasando opciones a `Component.Explorer()`.
 
-```typescript title="quartz.layout.ts"
+Por ejemplo, esta es la configuración predeterminada:
+
+```typescript
 Component.Explorer({
-  title: "Explorer", // title of the explorer component
-  folderClickBehavior: "collapse", // what happens when you click a folder ("link" to navigate to folder page on click or "collapse" to collapse folder on click)
-  folderDefaultState: "collapsed", // default state of folders ("collapsed" or "open")
-  useSavedState: true, // whether to use local storage to save "state" (which folders are opened) of explorer
-  // omitted but shown later
+  title: "Explorer", // título del componente explorador
+  folderClickBehavior: "collapse", // qué ocurre al hacer clic en una carpeta ("link" para navegar a la página de la carpeta o "collapse" para contraerla)
+  folderDefaultState: "collapsed", // estado predeterminado de las carpetas ("collapsed" o "open")
+  useSavedState: true, // si se debe usar local storage para guardar el estado (qué carpetas están abiertas)
+  // omitido pero mostrado más adelante
   sortFn: ...,
   filterFn: ...,
   mapFn: ...,
-  // what order to apply functions in
+  // orden en que se aplican las funciones
   order: ["filter", "map", "sort"],
 })
 ```
 
-When passing in your own options, you can omit any or all of these fields if you'd like to keep the default value for that field.
+Al proporcionar tus propias opciones, puedes omitir cualquiera de estos campos si deseas mantener el valor predeterminado.
 
-Want to customize it even more?
+¿Quieres personalizarlo aún más?
 
-- Removing explorer: remove `Component.Explorer()` from `quartz.layout.ts`
-  - (optional): After removing the explorer component, you can move the [[table of contents | Table of Contents]] component back to the `left` part of the layout
-- Changing `sort`, `filter` and `map` behavior: explained in [[#Advanced customization]]
-- Component: `quartz/components/Explorer.tsx`
-- Style: `quartz/components/styles/explorer.scss`
-- Script: `quartz/components/scripts/explorer.inline.ts`
+- **Eliminar el explorador:** elimina `Component.Explorer()` de `quartz.layout.ts`.
+    
+    - (Opcional): Después de eliminarlo, puedes mover el componente [[table of contents | Tabla de Contenidos]] nuevamente a la parte `left` del diseño.
+        
+- **Cambiar el comportamiento de `sort`, `filter` y `map`:** explicado en [[#Advanced customization]].
+    
+- **Componente:** `quartz/components/Explorer.tsx`
+    
+- **Estilos:** `quartz/components/styles/explorer.scss`
+    
+- **Script:** `quartz/components/scripts/explorer.inline.ts`
+## Personalización avanzada
 
-## Advanced customization
+Este componente te permite personalizar completamente su comportamiento. Puedes proporcionar funciones personalizadas para `sort`, `filter` y `map`.
 
-This component allows you to fully customize all of its behavior. You can pass a custom `sort`, `filter` and `map` function.
-All functions you can pass work with the `FileTrieNode` class, which has the following properties:
+Todas las funciones que puedes pasar trabajan con la clase `FileTrieNode`, que tiene las siguientes propiedades:
 
-```ts title="quartz/components/Explorer.tsx"
+```ts
 class FileTrieNode {
   isFolder: boolean
   children: Array<FileTrieNode>
@@ -60,7 +69,7 @@ class FileTrieNode {
 }
 ```
 
-```ts title="quartz/plugins/emitters/contentIndex.tsx"
+```ts
 export type ContentDetails = {
   slug: FullSlug
   title: string
@@ -70,10 +79,10 @@ export type ContentDetails = {
 }
 ```
 
-Every function you can pass is optional. By default, only a `sort` function will be used:
+Cada función que puedes proporcionar es opcional. Por defecto, solo se utiliza una función `sort`:
 
-```ts title="Default sort function"
-// Sort order: folders first, then files. Sort folders and files alphabetically
+```ts
+// Orden: primero carpetas, luego archivos. Carpetas y archivos ordenados alfabéticamente
 Component.Explorer({
   sortFn: (a, b) => {
     if ((!a.isFolder && !b.isFolder) || (a.isFolder && b.isFolder)) {
@@ -94,11 +103,20 @@ Component.Explorer({
 
 ---
 
-You can pass your own functions for `sortFn`, `filterFn` and `mapFn`. All functions will be executed in the order provided by the `order` option (see [[#Customization]]). These functions behave similarly to their `Array.prototype` counterpart, except they modify the entire `FileNode` tree in place instead of returning a new one.
+Puedes proporcionar tus propias funciones para `sortFn`, `filterFn` y `mapFn`. Todas las funciones se ejecutarán en el orden especificado por la opción `order` (ver [[#Customization]]).
 
-For more information on how to use `sort`, `filter` and `map`, you can check [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort), [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) and [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
+Estas funciones se comportan de forma similar a sus equivalentes en `Array.prototype`, excepto que modifican el árbol completo de `FileTrieNode` directamente (_in place_) en lugar de devolver uno nuevo.
 
-Type definitions look like this:
+Para más información sobre cómo usar `sort`, `filter` y `map`, puedes consultar:
+
+- [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+    
+- [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+    
+- [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+    
+
+Las definiciones de tipos son las siguientes:
 
 ```ts
 type SortFn = (a: FileTrieNode, b: FileTrieNode) => number
@@ -106,27 +124,28 @@ type FilterFn = (node: FileTrieNode) => boolean
 type MapFn = (node: FileTrieNode) => void
 ```
 
-## Basic examples
+---
 
-These examples show the basic usage of `sort`, `map` and `filter`.
+## Ejemplos básicos
 
-### Use `sort` to put files first
+Estos ejemplos muestran el uso básico de `sort`, `map` y `filter`.
 
-Using this example, the explorer will alphabetically sort everything.
+### Usar `sort` para colocar los archivos primero
 
-```ts title="quartz.layout.ts"
+Con este ejemplo, el explorador ordenará todo alfabéticamente.
+
+```ts
 Component.Explorer({
   sortFn: (a, b) => {
     return a.displayName.localeCompare(b.displayName)
   },
 })
 ```
+### Cambiar nombres visibles (`map`)
 
-### Change display names (`map`)
+Con este ejemplo, los nombres visibles de todos los `FileNode` (carpetas y archivos) se convertirán completamente a mayúsculas.
 
-Using this example, the display names of all `FileNodes` (folders + files) will be converted to full upper case.
-
-```ts title="quartz.layout.ts"
+```ts
 Component.Explorer({
   mapFn: (node) => {
     node.displayName = node.displayName.toUpperCase()
@@ -135,82 +154,93 @@ Component.Explorer({
 })
 ```
 
-### Remove list of elements (`filter`)
+---
 
-Using this example, you can remove elements from your explorer by providing an array of folders/files to exclude.
-Note that this example filters on the title but you can also do it via slug or any other field available on `FileTrieNode`.
+### Eliminar elementos de la lista (`filter`)
 
-```ts title="quartz.layout.ts"
+Con este ejemplo, puedes eliminar elementos del explorador proporcionando un arreglo de carpetas/archivos que deseas excluir.
+
+Ten en cuenta que este ejemplo filtra por el título, pero también puedes hacerlo por `slug` o cualquier otro campo disponible en `FileTrieNode`.
+
+```ts
 Component.Explorer({
   filterFn: (node) => {
-    // set containing names of everything you want to filter out
+    // conjunto con los nombres que deseas excluir
     const omit = new Set(["authoring content", "tags", "advanced"])
 
-    // can also use node.slug or by anything on node.data
-    // note that node.data is only present for files that exist on disk
-    // (e.g. implicit folder nodes that have no associated index.md)
+    // también puedes usar node.slug o cualquier propiedad de node.data
+    // recuerda que node.data solo existe para archivos presentes en disco
+    // (por ejemplo, nodos de carpetas implícitas sin index.md asociado)
     return !omit.has(node.displayName.toLowerCase())
   },
 })
 ```
 
-### Remove files by tag
+---
 
-You can access the tags of a file by `node.data.tags`.
+### Eliminar archivos por etiqueta
 
-```ts title="quartz.layout.ts"
+Puedes acceder a las etiquetas de un archivo mediante `node.data.tags`.
+
+```ts
 Component.Explorer({
   filterFn: (node) => {
-    // exclude files with the tag "explorerexclude"
+    // excluir archivos con la etiqueta "explorerexclude"
     return node.data?.tags?.includes("explorerexclude") !== true
   },
 })
 ```
 
-### Show every element in explorer
+---
 
-By default, the explorer will filter out the `tags` folder.
-To override the default filter function, you can set the filter function to `undefined`.
+### Mostrar todos los elementos en el explorador
 
-```ts title="quartz.layout.ts"
+Por defecto, el explorador filtra la carpeta `tags`.
+
+Para sobrescribir la función de filtrado predeterminada, puedes establecer `filterFn` como `undefined`.
+
+```ts
 Component.Explorer({
-  filterFn: undefined, // apply no filter function, every file and folder will visible
+  filterFn: undefined, // no aplicar filtro, todos los archivos y carpetas serán visibles
 })
 ```
 
-## Advanced examples
+---
 
-> [!tip]
-> When writing more complicated functions, the `layout` file can start to look very cramped.
-> You can fix this by defining your sort functions outside of the component
-> and passing it in.
->
-> ```ts title="quartz.layout.ts"
+## Ejemplos avanzados
+
+> [!tip]  
+> Al escribir funciones más complejas, el archivo `layout` puede verse muy sobrecargado.  
+> Puedes solucionarlo definiendo las funciones fuera del componente y luego pasándolas como referencia.
+> 
+> ```ts
 > import { Options } from "./quartz/components/Explorer"
->
+> 
 > export const mapFn: Options["mapFn"] = (node) => {
->   // implement your function here
+>   // implementa tu función aquí
 > }
 > export const filterFn: Options["filterFn"] = (node) => {
->   // implement your function here
+>   // implementa tu función aquí
 > }
 > export const sortFn: Options["sortFn"] = (a, b) => {
->   // implement your function here
+>   // implementa tu función aquí
 > }
->
+> 
 > Component.Explorer({
->   // ... your other options
+>   // ... otras opciones
 >   mapFn,
 >   filterFn,
 >   sortFn,
 > })
 > ```
 
-### Add emoji prefix
+---
 
-To add emoji prefixes (📁 for folders, 📄 for files), you could use a map function like this:
+### Agregar prefijo con emoji
 
-```ts title="quartz.layout.ts"
+Para agregar prefijos con emoji (📁 para carpetas, 📄 para archivos), puedes usar una función `map` como esta:
+
+```ts
 Component.Explorer({
   mapFn: (node) => {
     if (node.isFolder) {

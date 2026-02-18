@@ -4,21 +4,26 @@ tags:
   - plugin/emitter
 ---
 
-This plugin generates index pages for folders, creating a listing page for each folder that contains multiple content files. See [[folder and tag listings]] for more information.
+Este plugin genera páginas índice para carpetas, creando una página de listado para cada carpeta que contenga múltiples archivos de contenido. Consulta [[folder and tag listings]] para más información.
 
-Example: [[advanced/|Advanced]]
+Ejemplo: [[advanced/|Advanced]]
 
-> [!note]
-> For information on how to add, remove or configure plugins, see the [[configuration#Plugins|Configuration]] page.
+> [!note]  
+> Para obtener información sobre cómo agregar, eliminar o configurar plugins, consulta la página de [[configuration#Plugins|Configuration]].
 
-The pages are displayed using the `defaultListPageLayout` in `quartz.layouts.ts`. For the content, the `FolderContent` component is used. If you want to modify the layout, you must edit it directly (`quartz/components/pages/FolderContent.tsx`).
+Las páginas se muestran utilizando `defaultListPageLayout` en `quartz.layouts.ts`. Para el contenido, se utiliza el componente `FolderContent`. Si deseas modificar el diseño (_layout_), debes editarlo directamente en `quartz/components/pages/FolderContent.tsx`.
 
-This plugin accepts the following configuration options:
+Este plugin acepta las siguientes opciones de configuración:
 
-- `sort`: A function of type `(f1: QuartzPluginData, f2: QuartzPluginData) => number{:ts}` used to sort entries. Defaults to sorting by date and tie-breaking on lexographical order.
+- `sort`: Una función de tipo `(f1: QuartzPluginData, f2: QuartzPluginData) => number{:ts}` utilizada para ordenar las entradas. Por defecto, ordena por fecha y, en caso de empate, por orden lexicográfico.
+    
+
+---
 
 ## API
 
-- Category: Emitter
-- Function name: `Plugin.FolderPage()`.
-- Source: [`quartz/plugins/emitters/folderPage.tsx`](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/emitters/folderPage.tsx).
+- **Categoría:** Emitter
+    
+- **Nombre de la función:** `Plugin.FolderPage()`
+    
+- **Fuente:** [`quartz/plugins/emitters/folderPage.tsx`](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/emitters/folderPage.tsx)

@@ -4,93 +4,101 @@ tags:
   - feature/transformer
 ---
 
-Quartz supports the same Admonition-callout syntax as Obsidian.
+Quartz admite la misma sintaxis de _Admonition-callouts_ que Obsidian.
 
-This includes
+Esto incluye:
 
-- 12 Distinct callout types (each with several aliases)
-- Collapsable callouts
+- 12 tipos distintos de callouts (cada uno con varios alias)
+    
+- Callouts colapsables
+    
 
 ```
-> [!info] Title
-> This is a callout!
+> [!info] Título
+> ¡Esto es un callout!
 ```
 
-See [documentation on supported types and syntax here](https://help.obsidian.md/Editing+and+formatting/Callouts).
+Consulta la [documentación sobre los tipos y la sintaxis admitidos aquí](https://help.obsidian.md/Editing+and+formatting/Callouts).
 
-> [!warning]
-> Wondering why callouts may not be showing up even if you have them enabled? You may need to reorder your plugins so that [[ObsidianFlavoredMarkdown]] is _after_ [[SyntaxHighlighting]].
+> [!warning]  
+> ¿Te preguntas por qué los callouts no aparecen aunque los tengas habilitados? Puede que necesites reordenar tus plugins para que [[ObsidianFlavoredMarkdown]] esté _después_ de [[SyntaxHighlighting]].
 
-## Customization
+---
 
-The callouts are a functionality of the [[ObsidianFlavoredMarkdown]] plugin. See the plugin page for how to enable or disable them.
+## Personalización
 
-You can edit the icons by customizing `quartz/styles/callouts.scss`.
+Los callouts son una funcionalidad del plugin [[ObsidianFlavoredMarkdown]]. Consulta la página del plugin para saber cómo habilitarlos o deshabilitarlos.
 
-### Add custom callouts
+Puedes editar los íconos personalizando el archivo `quartz/styles/callouts.scss`.
 
-By default, custom callouts are handled by applying the `note` style. To make fancy ones, you have to add these lines to `custom.scss`.
+### Agregar callouts personalizados
 
-```scss title="quartz/styles/custom.scss"
+De forma predeterminada, los callouts personalizados utilizan el estilo `note`. Para crear estilos personalizados más avanzados, debes agregar las siguientes líneas en `custom.scss`:
+
+```scss
 .callout {
   &[data-callout="custom"] {
     --color: #customcolor;
     --border: #custombordercolor;
     --bg: #custombg;
-    --callout-icon: url("data:image/svg+xml; utf8, <custom formatted svg>"); //SVG icon code
+    --callout-icon: url("data:image/svg+xml; utf8, <custom formatted svg>"); // Código del ícono SVG
   }
 }
 ```
 
-> [!warning]
-> Don't forget to ensure that the SVG is URL encoded before putting it in the CSS. You can use tools like [this one](https://yoksel.github.io/url-encoder/) to help you do that.
+> [!warning]  
+> No olvides asegurarte de que el SVG esté codificado en formato URL antes de insertarlo en el CSS. Puedes utilizar herramientas como [esta](https://yoksel.github.io/url-encoder/) para hacerlo.
 
-## Showcase
+---
 
-> [!info]
-> Default title
+## Ejemplos
 
-> [!question]+ Can callouts be _nested_?
->
-> > [!todo]- Yes!, they can. And collapsed!
-> >
-> > > [!example] You can even use multiple layers of nesting.
+> [!info]  
+> Título predeterminado
 
-> [!note]
-> Aliases: "note"
+> [!question]+ ¿Los callouts pueden estar _anidados_?
+> 
+> > [!todo]- ¡Sí!, pueden. ¡Y también colapsarse!
+> > 
+> > > [!example] Incluso puedes usar múltiples niveles de anidación.
 
-> [!abstract]
-> Aliases: "abstract", "summary", "tldr"
+> [!note]  
+> Alias: "note"
 
-> [!info]
-> Aliases: "info"
+> [!abstract]  
+> Alias: "abstract", "summary", "tldr"
 
-> [!todo]
-> Aliases: "todo"
+> [!info]  
+> Alias: "info"
 
-> [!tip]
-> Aliases: "tip", "hint", "important"
+> [!todo]  
+> Alias: "todo"
 
-> [!success]
-> Aliases: "success", "check", "done"
+> [!tip]  
+> Alias: "tip", "hint", "important"
 
-> [!question]
-> Aliases: "question", "help", "faq"
+> [!success]  
+> Alias: "success", "check", "done"
 
-> [!warning]
-> Aliases: "warning", "attention", "caution"
+> [!question]  
+> Alias: "question", "help", "faq"
 
-> [!failure]
-> Aliases: "failure", "missing", "fail"
+> [!warning]  
+> Alias: "warning", "attention", "caution"
 
-> [!danger]
-> Aliases: "danger", "error"
+> [!failure]  
+> Alias: "failure", "missing", "fail"
 
-> [!bug]
-> Aliases: "bug"
+> [!danger]  
+> Alias: "danger", "error"
 
-> [!example]
-> Aliases: "example"
+> [!bug]  
+> Alias: "bug"
 
-> [!quote]
-> Aliases: "quote", "cite"
+> [!example]  
+> Alias: "example"
+
+> [!quote]  
+> Alias: "quote", "cite"
+
+

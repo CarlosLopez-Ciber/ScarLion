@@ -4,16 +4,19 @@ tags:
   - plugin/emitter
 ---
 
-This plugin emits a `favicon.ico` into the `public` folder. It creates the favicon from `icon.png` located in the `quartz/static` folder.
-The plugin resizes `icon.png` to 48x48px to make it as small as possible.
+Este plugin genera un archivo `favicon.ico` dentro de la carpeta `public`. Crea el favicon a partir de `icon.png`, ubicado en la carpeta `quartz/static`. El plugin redimensiona `icon.png` a 48x48 px para que el archivo resultante sea lo más pequeño posible.
 
-> [!note]
-> For information on how to add, remove or configure plugins, see the [[configuration#Plugins|Configuration]] page.
+> **Nota**  
+> Para obtener información sobre cómo agregar, eliminar o configurar plugins, consulta la página de [Configuration](https://quartz.jzhao.xyz/configuration#plugins).
 
-This plugin has no configuration options.
+Este plugin no tiene opciones de configuración.
+
+---
 
 ## API
 
-- Category: Emitter
-- Function name: `Plugin.Favicon()`.
-- Source: [`quartz/plugins/emitters/favicon.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/emitters/favicon.ts).
+- **Categoría:** Emitter
+    
+- **Nombre de la función:** `Plugin.Favicon()`
+    
+- **Fuente:** [`quartz/plugins/emitters/favicon.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz/plugins/emitters/favicon.ts)

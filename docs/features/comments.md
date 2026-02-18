@@ -4,57 +4,64 @@ tags:
   - component
 ---
 
-Quartz also has the ability to hook into various providers to enable readers to leave comments on your site.
+Quartz también tiene la capacidad de integrarse con distintos proveedores para permitir que los lectores dejen comentarios en tu sitio.
 
 ![[giscus-example.png]]
 
-As of today, only [Giscus](https://giscus.app/) is supported out of the box but PRs to support other providers are welcome!
+Actualmente, solo [Giscus](https://giscus.app/) está soportado de forma nativa, pero se aceptan _pull requests_ para añadir compatibilidad con otros proveedores.
 
-## Providers
+---
+
+## Proveedores
 
 ### Giscus
 
-First, make sure that the [[setting up your GitHub repository|GitHub]] repository you are using for your Quartz meets the following requirements:
+Primero, asegúrate de que el repositorio de [[setting up your GitHub repository|GitHub]] que estás utilizando para tu Quartz cumpla con los siguientes requisitos:
 
-1. The **repository is [public](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/setting-repository-visibility#making-a-repository-public)**, otherwise visitors will not be able to view the discussion.
-2. The **[giscus](https://github.com/apps/giscus) app is installed**, otherwise visitors will not be able to comment and react.
-3. The **Discussions feature is turned on** by [enabling it for your repository](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/enabling-or-disabling-github-discussions-for-a-repository).
+1. El **repositorio es público**, de lo contrario los visitantes no podrán ver la discusión.
+    
+2. La aplicación **[giscus](https://github.com/apps/giscus) está instalada**, de lo contrario los visitantes no podrán comentar ni reaccionar.
+    
+3. La funcionalidad **Discussions está habilitada** en el repositorio.
+    
 
-Then, use the [Giscus site](https://giscus.app/#repository) to figure out what your `repoId` and `categoryId` should be. Make sure you select `Announcements` for the Discussion category.
+Luego, utiliza el sitio de [Giscus](https://giscus.app/#repository) para obtener los valores de `repoId` y `categoryId`. Asegúrate de seleccionar `Announcements` como categoría de discusión.
 
 ![[giscus-repo.png]]
 
 ![[giscus-discussion.png]]
 
-After entering both your repository and selecting the discussion category, Giscus will compute some IDs that you'll need to provide back to Quartz. You won't need to manually add the script yourself as Quartz will handle that part for you but will need these values in the next step!
+Después de ingresar tu repositorio y seleccionar la categoría de discusión, Giscus calculará algunos identificadores que necesitarás proporcionar a Quartz. No tendrás que agregar manualmente el script, ya que Quartz se encargará de eso, pero sí necesitarás estos valores para el siguiente paso.
 
 ![[giscus-results.png]]
 
-Finally, in `quartz.layout.ts`, edit the `afterBody` field of `sharedPageComponents` to include the following options but with the values you got from above:
+Finalmente, en `quartz.layout.ts`, edita el campo `afterBody` de `sharedPageComponents` para incluir las siguientes opciones, reemplazando los valores con los que obtuviste:
 
-```ts title="quartz.layout.ts"
+```ts
 afterBody: [
   Component.Comments({
     provider: 'giscus',
     options: {
-      // from data-repo
+      // de data-repo
       repo: 'jackyzha0/quartz',
-      // from data-repo-id
+      // de data-repo-id
       repoId: 'MDEwOlJlcG9zaXRvcnkzODcyMTMyMDg',
-      // from data-category
+      // de data-category
       category: 'Announcements',
-      // from data-category-id
+      // de data-category-id
       categoryId: 'DIC_kwDOFxRnmM4B-Xg6',
-      // from data-lang
+      // de data-lang
       lang: 'en'
     }
   }),
 ],
 ```
 
-### Customization
+---
 
-Quartz also exposes a few of the other Giscus options as well and you can provide them the same way `repo`, `repoId`, `category`, and `categoryId` are provided.
+## Personalización
+
+Quartz también expone varias opciones adicionales de Giscus, que puedes proporcionar del mismo modo que `repo`, `repoId`, `category` y `categoryId`.
 
 ```ts
 type Options = {
@@ -65,69 +72,75 @@ type Options = {
     category: string
     categoryId: string
 
-    // Url to folder with custom themes
-    // defaults to 'https://${cfg.baseUrl}/static/giscus'
+    // URL a la carpeta con temas personalizados
+    // por defecto: 'https://${cfg.baseUrl}/static/giscus'
     themeUrl?: string
 
-    // filename for light theme .css file
-    // defaults to 'light'
+    // nombre del archivo .css para el tema claro
+    // por defecto: 'light'
     lightTheme?: string
 
-    // filename for dark theme .css file
-    // defaults to 'dark'
+    // nombre del archivo .css para el tema oscuro
+    // por defecto: 'dark'
     darkTheme?: string
 
-    // how to map pages -> discussions
-    // defaults to 'url'
+    // cómo mapear páginas → discusiones
+    // por defecto: 'url'
     mapping?: "url" | "title" | "og:title" | "specific" | "number" | "pathname"
 
-    // use strict title matching
-    // defaults to true
+    // usar coincidencia estricta de título
+    // por defecto: true
     strict?: boolean
 
-    // whether to enable reactions for the main post
-    // defaults to true
+    // habilitar reacciones para la publicación principal
+    // por defecto: true
     reactionsEnabled?: boolean
 
-    // where to put the comment input box relative to the comments
-    // defaults to 'bottom'
+    // posición del cuadro de comentarios respecto a los comentarios existentes
+    // por defecto: 'bottom'
     inputPosition?: "top" | "bottom"
 
-    // set your preference language here
-    // defaults to 'en'
+    // idioma preferido
+    // por defecto: 'en'
     lang?: string
   }
 }
 ```
 
-#### Custom CSS theme
+---
 
-Quartz supports custom theme for Giscus. To use a custom CSS theme, place the `.css` file inside the `quartz/static` folder and set the configuration values.
+### Tema CSS personalizado
 
-For example, if you have a light theme `light-theme.css`, a dark theme `dark-theme.css`, and your Quartz site is hosted at `https://example.com/`:
+Quartz admite temas personalizados para Giscus. Para utilizarlos, coloca el archivo `.css` dentro de la carpeta `quartz/static` y configura los valores correspondientes.
+
+Por ejemplo, si tienes un tema claro `light-theme.css`, un tema oscuro `dark-theme.css`, y tu sitio Quartz está alojado en `https://example.com/`:
 
 ```ts
 afterBody: [
   Component.Comments({
     provider: 'giscus',
     options: {
-      // Other options
+      // Otras opciones
 
-      themeUrl: "https://example.com/static/giscus", // corresponds to quartz/static/giscus/
-      lightTheme: "light-theme", // corresponds to light-theme.css in quartz/static/giscus/
-      darkTheme: "dark-theme", // corresponds to dark-theme.css quartz/static/giscus/
+      themeUrl: "https://example.com/static/giscus", // corresponde a quartz/static/giscus/
+      lightTheme: "light-theme", // corresponde a light-theme.css
+      darkTheme: "dark-theme", // corresponde a dark-theme.css
     }
   }),
 ],
 ```
 
-#### Conditionally display comments
+---
 
-Quartz can conditionally display the comment box based on a field `comments` in the frontmatter. By default, all pages will display comments, to disable it for a specific page, set `comments` to `false`.
+### Mostrar comentarios de forma condicional
+
+Quartz puede mostrar el cuadro de comentarios de forma condicional basándose en el campo `comments` del _frontmatter_.
+
+Por defecto, todas las páginas muestran comentarios. Para deshabilitarlos en una página específica, establece `comments` en `false`:
 
 ```
 ---
-title: Comments disabled here!
+title: ¡Comentarios deshabilitados aquí!
 comments: false
 ---
 ```
