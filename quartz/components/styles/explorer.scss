@@ -280,3 +280,17 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
     }
   }
 }
+
+/* Emoji para carpetas (siempre) */
+.explorer .folder-title::before {
+  content: "📁 ";
+}
+
+/* Emoji para archivos (siempre) */
+.explorer a::before {
+  content: "📄 ";
+}
+
+/* Si hay links especiales donde no quieres emoji, puedes excluirlos así:
+.explorer a.tag-link::before { content: ""; }
+*/

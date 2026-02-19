@@ -1,27 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
-// Explorer con emojis (se reutiliza en ambos layouts)
-const explorerWithIcons = Component.Explorer({
-  mapFn: (node) => {
-    const prefix = node.isFolder ? "📁 " : "📄 "
-
-    // displayName (lo que se ve normalmente)
-    if (typeof node.displayName === "string" && !node.displayName.startsWith(prefix)) {
-      node.displayName = prefix + node.displayName
-    }
-
-    // algunos renders usan name/title (especialmente al entrar a índices)
-    const anyNode = node as any
-    if (typeof anyNode.name === "string" && !anyNode.name.startsWith(prefix)) {
-      anyNode.name = prefix + anyNode.name
-    }
-    if (typeof anyNode.title === "string" && !anyNode.title.startsWith(prefix)) {
-      anyNode.title = prefix + anyNode.title
-    }
-  },
-})
-
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
@@ -35,7 +14,7 @@ export const sharedPageComponents: SharedLayout = {
   }),
 }
 
-// components for pages that display a single page (e.g. a single note)
+// pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
@@ -56,8 +35,8 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    // ✅ Aquí usamos el Explorer con emojis
-    explorerWithIcons,
+    // ✅ Explorer normal (los emojis ahora los pone el CSS)
+    Component.Explorer(),
   ],
   right: [
     Component.Graph(),
@@ -66,7 +45,7 @@ export const defaultContentPageLayout: PageLayout = {
   ],
 }
 
-// components for pages that display lists of pages (e.g. tags or folders)
+// pages that display lists of pages (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
   left: [
@@ -78,9 +57,8 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    // ✅ Aquí también usamos el mismo Explorer con emojis
-    explorerWithIcons,
+    // ✅ Explorer normal (los emojis ahora los pone el CSS)
+    Component.Explorer(),
   ],
   right: [],
 }
-
