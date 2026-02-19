@@ -56,6 +56,7 @@ export const defaultContentPageLayout: PageLayout = {
       },
     }),
 
+
   ],
   right: [
     Component.Graph(),
