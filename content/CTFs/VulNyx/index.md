@@ -1,3 +1,7 @@
+---
+title: VulNyx
+---
+
 # VulNyx
 
 [Lista de Maquinas - Vulnyx](Lista%20de%20Maquinas%20-%20VulN.md)
