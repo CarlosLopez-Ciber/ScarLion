@@ -41,9 +41,25 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer({
   mapFn: (node) => {
     const prefix = node.isFolder ? "📁 " : "📄 "
-    node.displayName = prefix + node.displayName
+
+    // displayName (lo que se ve normalmente)
+    if (typeof node.displayName === "string" && !node.displayName.startsWith(prefix)) {
+      node.displayName = prefix + node.displayName
+    }
+
+    // algunos renders del Explorer usan name/title (especialmente al entrar a índices)
+    const anyNode = node as any
+
+    if (typeof anyNode.name === "string" && !anyNode.name.startsWith(prefix)) {
+      anyNode.name = prefix + anyNode.name
+    }
+
+    if (typeof anyNode.title === "string" && !anyNode.title.startsWith(prefix)) {
+      anyNode.title = prefix + anyNode.title
+    }
   },
 }),
+
 
 
   ],
