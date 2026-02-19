@@ -83,7 +83,7 @@ const config: QuartzConfig = {
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
-        description: "Investigación y análisis técnico en ciberseguridad.",
+        rssLimit: 15,
       }),
       Plugin.Assets(),
       Plugin.Static(),
