@@ -1,3 +1,15 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+/* Listados de páginas (como los índices de carpetas) */
+.page-list a::before,
+.pageList a::before {
+  content: "📄 ";
+}
+
+/* Si el índice también lista carpetas como links con "/" o data-attr, ajustamos */
+.page-list a[href$="/"]::before,
+.pageList a[href$="/"]::before {
+  content: "📁 ";
+}
