@@ -145,108 +145,117 @@ body,
   color: var(--dark);
 }
 
-
 /* =========================================
-   Nord Dark (Quartz) — fixes visual hierarchy
+   MONOCHROME DARK — everything same as center
+   Uses Nord dark0 as single background
    ========================================= */
+
 html[saved-theme="dark"] {
   color-scheme: dark;
 
-  /* Quartz core tokens (dark) */
-  --light: var(--dark0) !important;       /* page bg */
-  --lightgray: var(--dark1) !important;   /* panel bg */
-  --gray: var(--dark2) !important;        /* card bg */
-  --darkgray: var(--light0) !important;   /* muted text */
-  --dark: var(--light2) !important;       /* main text */
+  /* single background tone */
+  --mono-bg: var(--dark0);                 /* #2e3440 */
+  --mono-border: rgba(var(--light0_x), 0.10);
+  --mono-border-strong: rgba(var(--light0_x), 0.18);
 
-  --secondary: var(--frost1) !important;  /* links/accent */
-  --tertiary: var(--frost2) !important;   /* hover/visited */
-  --highlight: rgba(var(--frost1_x), 0.22) !important;
-  --textHighlight: rgba(var(--yellow_x), 0.35) !important;
+  --mono-text: var(--light2);
+  --mono-text-muted: rgba(var(--light2_x), 0.72);
 
-  --code-bg: var(--dark2) !important;
-  --code-fg: var(--light2) !important;
+  /* Map Quartz tokens to monochrome */
+  --light: var(--mono-bg) !important;
+  --lightgray: var(--mono-bg) !important;
+  --gray: var(--mono-bg) !important;
+
+  --dark: var(--mono-text) !important;
+  --darkgray: var(--mono-text-muted) !important;
+
+  /* keep links subtle (still monochrome-ish) */
+  --secondary: rgba(var(--light2_x), 0.90) !important;
+  --tertiary: rgba(var(--light2_x), 0.75) !important;
+
+  --highlight: rgba(var(--light2_x), 0.10) !important;
+  --textHighlight: rgba(var(--light2_x), 0.18) !important;
+
+  --code-bg: rgba(var(--light2_x), 0.06) !important;
+  --code-fg: var(--mono-text) !important;
 }
 
-/* Canvas */
+/* Force ALL major containers to the same bg */
+html[saved-theme="dark"],
 html[saved-theme="dark"] body,
 html[saved-theme="dark"] #quartz-root,
 html[saved-theme="dark"] .page,
-html[saved-theme="dark"] #quartz-body {
-  background-color: var(--dark0) !important;
+html[saved-theme="dark"] #quartz-body,
+html[saved-theme="dark"] .center,
+html[saved-theme="dark"] .sidebar,
+html[saved-theme="dark"] .page-header,
+html[saved-theme="dark"] .page-footer {
+  background: var(--mono-bg) !important;
   background-image: none !important;
-  color: var(--light2) !important;
+  color: var(--mono-text) !important;
 }
 
-/* Sidebars as panels */
+/* Monochrome hierarchy via borders only */
 html[saved-theme="dark"] .sidebar {
-  background-color: var(--dark1) !important;
-  background-image: none !important;
-  border-right: 1px solid var(--dark3);
+  border-right: 1px solid var(--mono-border) !important;
 }
 html[saved-theme="dark"] .right.sidebar {
-  border-right: none;
-  border-left: 1px solid var(--dark3);
+  border-right: none !important;
+  border-left: 1px solid var(--mono-border) !important;
 }
 
-/* Center column */
-html[saved-theme="dark"] .center {
-  background-color: var(--dark0) !important;
-}
-
-/* Make “cards/surfaces” look like Nord */
+/* Cards/surfaces: same bg, just a border + slight inner shadow */
 html[saved-theme="dark"] pre,
-html[saved-theme="dark"] code,
 html[saved-theme="dark"] .callout,
-html[saved-theme="dark"] .popover,
-html[saved-theme="dark"] .search-container,
 html[saved-theme="dark"] .toc,
 html[saved-theme="dark"] .backlinks,
-html[saved-theme="dark"] .graph-outer {
-  background-color: var(--dark2) !important;
-  border: 1px solid var(--dark3) !important;
+html[saved-theme="dark"] .graph-outer,
+html[saved-theme="dark"] .search-container,
+html[saved-theme="dark"] .popover {
+  background: var(--mono-bg) !important;
+  border: 1px solid var(--mono-border) !important;
   border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(var(--light2_x), 0.03);
 }
 
-/* Code blocks */
+/* Inline code + code blocks: still monochrome, slightly lifted */
+html[saved-theme="dark"] code {
+  background: var(--code-bg) !important;
+  color: var(--mono-text) !important;
+  border: 1px solid var(--mono-border) !important;
+  border-radius: 6px;
+  padding: 0.1em 0.25em;
+}
 html[saved-theme="dark"] pre {
   padding: 0.9rem 1rem;
 }
-html[saved-theme="dark"] code {
-  background-color: rgba(var(--dark2_x), 0.9) !important;
-  color: var(--light2) !important;
+
+/* Text hierarchy */
+html[saved-theme="dark"] p,
+html[saved-theme="dark"] li {
+  color: var(--mono-text) !important;
+}
+html[saved-theme="dark"] .content-meta,
+html[saved-theme="dark"] .meta,
+html[saved-theme="dark"] .breadcrumb,
+html[saved-theme="dark"] .toc a {
+  color: var(--mono-text-muted) !important;
 }
 
-/* Links */
-html[saved-theme="dark"] a.internal,
-html[saved-theme="dark"] a.external {
-  color: var(--frost1);
+/* Links (monochrome) */
+html[saved-theme="dark"] a {
+  color: rgba(var(--light2_x), 0.92) !important;
+  text-decoration: none;
 }
-html[saved-theme="dark"] a.internal:hover,
-html[saved-theme="dark"] a.external:hover {
-  color: var(--frost2);
-}
-
-/* Titles: keep Nord vibe but improve readability */
-html[saved-theme="dark"] h1 { color: var(--red); }
-html[saved-theme="dark"] h2 { color: var(--yellow); }
-html[saved-theme="dark"] h3 { color: var(--green); }
-html[saved-theme="dark"] h4 { color: var(--purple); }
-html[saved-theme="dark"] h5 { color: var(--frost0); }
-html[saved-theme="dark"] h6 { color: var(--frost2); }
-
-/* Reduce “muddy” look in sidebar text */
-html[saved-theme="dark"] .sidebar,
-html[saved-theme="dark"] .sidebar * {
-  color: var(--light1);
-}
-html[saved-theme="dark"] .sidebar a {
-  color: var(--light2);
+html[saved-theme="dark"] a:hover {
+  color: rgba(var(--light2_x), 1) !important;
+  text-decoration: underline;
 }
 
-/* Explorer selection highlight */
-html[saved-theme="dark"] .explorer a:hover,
-html[saved-theme="dark"] .explorer a[aria-current="page"] {
-  background: rgba(var(--frost1_x), 0.18) !important;
-  border-radius: 8px;
-}
+/* Headings WITH color (still monochrome UI) */
+html[saved-theme="dark"] h1 { color: var(--red) !important; }
+html[saved-theme="dark"] h2 { color: var(--yellow) !important; }
+html[saved-theme="dark"] h3 { color: var(--green) !important; }
+html[saved-theme="dark"] h4 { color: var(--purple) !important; }
+html[saved-theme="dark"] h5 { color: var(--frost0) !important; }
+html[saved-theme="dark"] h6 { color: var(--frost2) !important; }
