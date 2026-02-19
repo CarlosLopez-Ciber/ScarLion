@@ -4,7 +4,6 @@ title: VulnHub
 
 # VulnHub
 
-[VulnHub-Preguntas y Respuestas](VulnHub-Preguntas%20y%20Respuestas.md)
 
 > [WriteUp - Metasploitable 2](WriteUp%20-%20Metasploitable%202.md)
 

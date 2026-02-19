@@ -1,15 +1,150 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+/* =========================
+   Nord palette (base)
+   ========================= */
+:root {
+  --dark0_x: 46, 52, 64;   /* #2e3440 */
+  --dark1_x: 59, 66, 82;   /* #3b4252 */
+  --dark2_x: 67, 76, 94;   /* #434c5e */
+  --dark3_x: 76, 86, 106;  /* #4c566a */
 
-/* Listados de páginas (como los índices de carpetas) */
-.page-list a::before,
-.pageList a::before {
-  content: "📄 ";
+  --light0_x: 216, 222, 233; /* #d8dee9 */
+  --light1_x: 229, 233, 240; /* #e5e9f0 */
+  --light2_x: 236, 239, 244; /* #eceff4 */
+  --light3_x: 255, 255, 255; /* #ffffff */
+
+  --frost0_x: 143, 188, 187; /* #8fbcbb */
+  --frost1_x: 136, 192, 208; /* #88c0d0 */
+  --frost2_x: 129, 161, 193; /* #81a1c1 */
+  --frost3_x: 94, 129, 172;  /* #5e81ac */
+
+  --red_x: 191, 97, 106;     /* #bf616a */
+  --orange_x: 208, 135, 112; /* #d08770 */
+  --yellow_x: 235, 203, 139; /* #ebcb8b */
+  --green_x: 163, 190, 140;  /* #a3be8c */
+  --purple_x: 180, 142, 173; /* #b48ead */
+
+  --dark0: rgb(var(--dark0_x));
+  --dark1: rgb(var(--dark1_x));
+  --dark2: rgb(var(--dark2_x));
+  --dark3: rgb(var(--dark3_x));
+
+  --light0: rgb(var(--light0_x));
+  --light1: rgb(var(--light1_x));
+  --light2: rgb(var(--light2_x));
+  --light3: rgb(var(--light3_x));
+
+  --frost0: rgb(var(--frost0_x));
+  --frost1: rgb(var(--frost1_x));
+  --frost2: rgb(var(--frost2_x));
+  --frost3: rgb(var(--frost3_x));
+
+  --red: rgb(var(--red_x));
+  --orange: rgb(var(--orange_x));
+  --yellow: rgb(var(--yellow_x));
+  --green: rgb(var(--green_x));
+  --purple: rgb(var(--purple_x));
 }
 
-/* Si el índice también lista carpetas como links con "/" o data-attr, ajustamos */
-.page-list a[href$="/"]::before,
-.pageList a[href$="/"]::before {
-  content: "📁 ";
+/* =========================
+   Quartz mapping (LIGHT)
+   ========================= */
+:root,
+html,
+body {
+  --light: var(--light3);
+  --lightgray: var(--light2);
+  --gray: var(--light1);
+  --darkgray: rgb(var(--dark2_x));
+  --dark: rgb(var(--dark0_x));
+
+  --secondary: var(--frost3);
+  --tertiary: var(--frost2);
+  --highlight: rgba(var(--frost1_x), 0.25);
+  --textHighlight: rgba(var(--yellow_x), 0.45);
+
+  --code-bg: rgba(var(--light2_x), 0.9);
+  --code-fg: var(--frost3);
 }
+
+/* =========================
+   Quartz mapping (DARK)
+   (cubre múltiples selectores según versión)
+   ========================= */
+html[saved-theme="dark"],
+:root[saved-theme="dark"],
+body[saved-theme="dark"],
+html[data-theme="dark"],
+:root[data-theme="dark"],
+body[data-theme="dark"],
+html.dark,
+body.dark {
+  --light: var(--dark0);
+  --lightgray: var(--dark1);
+  --gray: var(--dark2);
+  --darkgray: var(--light1);
+  --dark: var(--light2);
+
+  --secondary: var(--frost1);
+  --tertiary: var(--frost2);
+  --highlight: rgba(var(--frost1_x), 0.22);
+  --textHighlight: rgba(var(--frost1_x), 0.55);
+
+  --code-bg: var(--dark1);
+  --code-fg: var(--frost1);
+}
+
+/* =========================
+   Global look
+   ========================= */
+body {
+  background: var(--light);
+  color: var(--dark);
+}
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border-radius: 6px;
+  padding: 0.1em 0.25em;
+}
+pre {
+  background: var(--code-bg);
+  border-radius: 10px;
+}
+
+mark {
+  background: var(--textHighlight);
+  color: var(--dark);
+  border-radius: 6px;
+  padding: 0.05em 0.2em;
+}
+
+/* Tables */
+table {
+  border: 1px solid var(--gray);
+  border-collapse: collapse;
+}
+thead {
+  border-bottom: 2px solid var(--gray);
+}
+th, td {
+  border: 1px solid var(--gray);
+}
+tbody tr:nth-child(even) { background: rgba(var(--frost2_x), 0.08); }
+tbody tr:nth-child(odd)  { background: rgba(var(--frost2_x), 0.04); }
+tbody tr:hover           { background: rgba(var(--frost1_x), 0.14); }
+
+/* =========================
+   Nord Heading Colors (both modes)
+   ========================= */
+h1 { color: var(--red); }
+h2 { color: var(--yellow); }
+h3 { color: var(--green); }
+h4 { color: var(--purple); }
+h5 { color: var(--frost0); }
+h6 { color: var(--frost2); }
