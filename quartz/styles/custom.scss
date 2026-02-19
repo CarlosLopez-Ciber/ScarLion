@@ -66,46 +66,6 @@
   --code-fg: var(--frost3);
 }
 
-
-/* =========================
-   Nord Dark: force backgrounds (avoid pure black)
-   ========================= */
-html[saved-theme="dark"] {
-  /* Asegura que la variable base sea Nord, no negro */
-  --light: var(--dark0) !important;
-  --lightgray: var(--dark1) !important;
-  --gray: var(--dark2) !important;
-  --dark: var(--light2) !important;
-  --darkgray: var(--light1) !important;
-
-  color-scheme: dark;
-}
-
-/* Fuerza el fondo en TODOS los contenedores principales de Quartz */
-html[saved-theme="dark"],
-html[saved-theme="dark"] body,
-html[saved-theme="dark"] #quartz-root,
-html[saved-theme="dark"] .page,
-html[saved-theme="dark"] #quartz-body,
-html[saved-theme="dark"] .center {
-  background: var(--dark0) !important;          /* #2e3440 */
-  color: var(--light2) !important;
-}
-
-/* Sidebars como paneles Nord */
-html[saved-theme="dark"] .sidebar {
-  background: var(--dark1) !important;          /* #3b4252 */
-}
-
-/* Bloques/cajas típicas (si Quartz usa lightgray en varios lugares) */
-html[saved-theme="dark"] .popover,
-html[saved-theme="dark"] .callout,
-html[saved-theme="dark"] pre,
-html[saved-theme="dark"] code {
-  background: var(--dark1) !important;
-}
-
-
 /* =========================
    Global look (Quartz containers)
    ========================= */
