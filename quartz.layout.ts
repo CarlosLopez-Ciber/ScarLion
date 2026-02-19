@@ -39,14 +39,16 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({
-      mapFn: (node) => {
-        if (node.isFolder) {
-          node.displayName = "📁 " + node.displayName
-        } else {
-          node.displayName = "📄 " + node.displayName
-        }
-      },
-    }),
+  mapFn: (node) => {
+    return {
+      ...node,
+      displayName: node.isFolder
+        ? `📁 ${node.displayName}`
+        : `📄 ${node.displayName}`,
+    }
+  },
+}),
+
   ],
   right: [
     Component.Graph(),
