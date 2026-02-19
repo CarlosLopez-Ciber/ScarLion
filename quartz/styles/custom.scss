@@ -184,3 +184,109 @@ body,
   background-color: var(--light);
   color: var(--dark);
 }
+
+
+/* =========================================
+   Nord Dark (Quartz) — fixes visual hierarchy
+   ========================================= */
+html[saved-theme="dark"] {
+  color-scheme: dark;
+
+  /* Quartz core tokens (dark) */
+  --light: var(--dark0) !important;       /* page bg */
+  --lightgray: var(--dark1) !important;   /* panel bg */
+  --gray: var(--dark2) !important;        /* card bg */
+  --darkgray: var(--light0) !important;   /* muted text */
+  --dark: var(--light2) !important;       /* main text */
+
+  --secondary: var(--frost1) !important;  /* links/accent */
+  --tertiary: var(--frost2) !important;   /* hover/visited */
+  --highlight: rgba(var(--frost1_x), 0.22) !important;
+  --textHighlight: rgba(var(--yellow_x), 0.35) !important;
+
+  --code-bg: var(--dark2) !important;
+  --code-fg: var(--light2) !important;
+}
+
+/* Canvas */
+html[saved-theme="dark"] body,
+html[saved-theme="dark"] #quartz-root,
+html[saved-theme="dark"] .page,
+html[saved-theme="dark"] #quartz-body {
+  background-color: var(--dark0) !important;
+  background-image: none !important;
+  color: var(--light2) !important;
+}
+
+/* Sidebars as panels */
+html[saved-theme="dark"] .sidebar {
+  background-color: var(--dark1) !important;
+  background-image: none !important;
+  border-right: 1px solid var(--dark3);
+}
+html[saved-theme="dark"] .right.sidebar {
+  border-right: none;
+  border-left: 1px solid var(--dark3);
+}
+
+/* Center column */
+html[saved-theme="dark"] .center {
+  background-color: var(--dark0) !important;
+}
+
+/* Make “cards/surfaces” look like Nord */
+html[saved-theme="dark"] pre,
+html[saved-theme="dark"] code,
+html[saved-theme="dark"] .callout,
+html[saved-theme="dark"] .popover,
+html[saved-theme="dark"] .search-container,
+html[saved-theme="dark"] .toc,
+html[saved-theme="dark"] .backlinks,
+html[saved-theme="dark"] .graph-outer {
+  background-color: var(--dark2) !important;
+  border: 1px solid var(--dark3) !important;
+  border-radius: 10px;
+}
+
+/* Code blocks */
+html[saved-theme="dark"] pre {
+  padding: 0.9rem 1rem;
+}
+html[saved-theme="dark"] code {
+  background-color: rgba(var(--dark2_x), 0.9) !important;
+  color: var(--light2) !important;
+}
+
+/* Links */
+html[saved-theme="dark"] a.internal,
+html[saved-theme="dark"] a.external {
+  color: var(--frost1);
+}
+html[saved-theme="dark"] a.internal:hover,
+html[saved-theme="dark"] a.external:hover {
+  color: var(--frost2);
+}
+
+/* Titles: keep Nord vibe but improve readability */
+html[saved-theme="dark"] h1 { color: var(--red); }
+html[saved-theme="dark"] h2 { color: var(--yellow); }
+html[saved-theme="dark"] h3 { color: var(--green); }
+html[saved-theme="dark"] h4 { color: var(--purple); }
+html[saved-theme="dark"] h5 { color: var(--frost0); }
+html[saved-theme="dark"] h6 { color: var(--frost2); }
+
+/* Reduce “muddy” look in sidebar text */
+html[saved-theme="dark"] .sidebar,
+html[saved-theme="dark"] .sidebar * {
+  color: var(--light1);
+}
+html[saved-theme="dark"] .sidebar a {
+  color: var(--light2);
+}
+
+/* Explorer selection highlight */
+html[saved-theme="dark"] .explorer a:hover,
+html[saved-theme="dark"] .explorer a[aria-current="page"] {
+  background: rgba(var(--frost1_x), 0.18) !important;
+  border-radius: 8px;
+}
