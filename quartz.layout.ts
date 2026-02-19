@@ -40,11 +40,20 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer({
   mapFn: (node) => {
-    return {
-      ...node,
-      displayName: node.isFolder
-        ? `📁 ${node.displayName}`
-        : `📄 ${node.displayName}`,
+    const prefix = node.isFolder ? "📁 " : "📄 "
+
+    // Evita que se duplique si se procesa más de una vez
+    if (typeof node.displayName === "string" && !node.displayName.startsWith(prefix)) {
+      node.displayName = prefix + node.displayName
+    }
+
+    // Algunos renders (especialmente el activo) usan `name` o `title`
+    if (typeof (node as any).name === "string" && !(node as any).name.startsWith(prefix)) {
+      ;(node as any).name = prefix + (node as any).name
+    }
+
+    if (typeof (node as any).title === "string" && !(node as any).title.startsWith(prefix)) {
+      ;(node as any).title = prefix + (node as any).title
     }
   },
 }),
