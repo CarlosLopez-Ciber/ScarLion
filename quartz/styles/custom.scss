@@ -1,8 +1,8 @@
 @use "./base.scss";
 
-/* =========================
-   Nord palette (base)
-   ========================= */
+/* =========================================================
+   1) Nord palette (base tokens)
+   ========================================================= */
 :root {
   --dark0_x: 46, 52, 64;   /* #2e3440 */
   --dark1_x: 59, 66, 82;   /* #3b4252 */
@@ -47,41 +47,29 @@
   --purple: rgb(var(--purple_x));
 }
 
-/* =========================
-   Quartz mapping (LIGHT)
-   ========================= */
+/* =========================================================
+   2) Quartz tokens mapping (LIGHT mode)
+   (Quartz usa estas variables en muchos componentes)
+   ========================================================= */
 :root {
   --light: var(--light3);
   --lightgray: var(--light2);
   --gray: var(--light1);
-  --darkgray: rgb(var(--dark2_x));
-  --dark: rgb(var(--dark0_x));
+  --dark: var(--dark0);
+  --darkgray: var(--dark2);
 
   --secondary: var(--frost3);
   --tertiary: var(--frost2);
   --highlight: rgba(var(--frost1_x), 0.25);
   --textHighlight: rgba(var(--yellow_x), 0.45);
 
-  --code-bg: rgba(var(--light2_x), 0.9);
+  --code-bg: rgba(var(--light2_x), 0.90);
   --code-fg: var(--frost3);
 }
 
-/* =========================
-   Global look (Quartz containers)
-   ========================= */
-
-/* Base (light) */
-body,
-#quartz-root,
-.page,
-#quartz-body,
-.center,
-.sidebar {
-  background-color: var(--light);
-  color: var(--dark);
-}
-
-
+/* =========================================================
+   3) Base typography / elements (both modes)
+   ========================================================= */
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -91,6 +79,7 @@ code {
   border-radius: 6px;
   padding: 0.1em 0.25em;
 }
+
 pre {
   background: var(--code-bg);
   border-radius: 10px;
@@ -118,9 +107,7 @@ tbody tr:nth-child(even) { background: rgba(var(--frost2_x), 0.08); }
 tbody tr:nth-child(odd)  { background: rgba(var(--frost2_x), 0.04); }
 tbody tr:hover           { background: rgba(var(--frost1_x), 0.14); }
 
-/* =========================
-   Nord Heading Colors (both modes)
-   ========================= */
+/* Headings con color (en ambos modos) */
 h1 { color: var(--red); }
 h2 { color: var(--yellow); }
 h3 { color: var(--green); }
@@ -128,14 +115,13 @@ h4 { color: var(--purple); }
 h5 { color: var(--frost0); }
 h6 { color: var(--frost2); }
 
-
-
-/* =========================
-   Global look (Quartz containers)
-   ========================= */
-
-/* Base (light) */
-body,
+/* =========================================================
+   4) LIGHT mode surfaces (Quartz containers)
+   ========================================================= */
+body {
+  background: var(--light);
+  color: var(--dark);
+}
 #quartz-root,
 .page,
 #quartz-body,
@@ -145,66 +131,49 @@ body,
   color: var(--dark);
 }
 
-/* =========================================
-   MONOCHROME DARK — everything same as center
-   Uses Nord dark0 as single background
-   ========================================= */
-
+/* =========================================================
+   5) DARK mode: Monochrome Nord (UI monocroma)
+   ========================================================= */
 html[saved-theme="dark"] {
   color-scheme: dark;
 
-  /* single background tone */
-  --mono-bg: var(--dark0);                 /* #2e3440 */
-  --mono-border: rgba(var(--light0_x), 0.10);
-  --mono-border-strong: rgba(var(--light0_x), 0.18);
-
+  /* “un solo tono” de fondo como tu center */
+  --mono-bg: var(--dark0);
   --mono-text: var(--light2);
-  --mono-text-muted: rgba(var(--light2_x), 0.72);
+  --mono-muted: rgba(var(--light2_x), 0.70);
 
-  /* Map Quartz tokens to monochrome */
-  --light: var(--mono-bg) !important;
-  --lightgray: var(--mono-bg) !important;
-  --gray: var(--mono-bg) !important;
+  --mono-border: rgba(var(--light0_x), 0.12);
 
-  --dark: var(--mono-text) !important;
-  --darkgray: var(--mono-text-muted) !important;
+  /* Quartz tokens -> monocromo */
+  --light: var(--mono-bg);
+  --lightgray: var(--mono-bg);
+  --gray: var(--mono-bg);
 
-  /* keep links subtle (still monochrome-ish) */
-  --secondary: rgba(var(--light2_x), 0.90) !important;
-  --tertiary: rgba(var(--light2_x), 0.75) !important;
+  --dark: var(--mono-text);
+  --darkgray: var(--mono-muted);
 
-  --highlight: rgba(var(--light2_x), 0.10) !important;
-  --textHighlight: rgba(var(--light2_x), 0.18) !important;
+  --secondary: rgba(var(--light2_x), 0.92);
+  --tertiary: rgba(var(--light2_x), 0.80);
 
-  --code-bg: rgba(var(--light2_x), 0.06) !important;
-  --code-fg: var(--mono-text) !important;
+  --highlight: rgba(var(--light2_x), 0.10);
+  --textHighlight: rgba(var(--light2_x), 0.18);
+
+  --code-bg: rgba(var(--light2_x), 0.06);
+  --code-fg: var(--mono-text);
 }
 
-/* Force ALL major containers to the same bg */
-html[saved-theme="dark"],
+/* Forzamos superficies principales (Quartz a veces pinta cosas aparte) */
 html[saved-theme="dark"] body,
 html[saved-theme="dark"] #quartz-root,
 html[saved-theme="dark"] .page,
 html[saved-theme="dark"] #quartz-body,
 html[saved-theme="dark"] .center,
-html[saved-theme="dark"] .sidebar,
-html[saved-theme="dark"] .page-header,
-html[saved-theme="dark"] .page-footer {
+html[saved-theme="dark"] .sidebar {
   background: var(--mono-bg) !important;
-  background-image: none !important;
   color: var(--mono-text) !important;
 }
 
-/* Monochrome hierarchy via borders only */
-html[saved-theme="dark"] .sidebar {
-  border-right: 1px solid var(--mono-border) !important;
-}
-html[saved-theme="dark"] .right.sidebar {
-  border-right: none !important;
-  border-left: 1px solid var(--mono-border) !important;
-}
-
-/* Cards/surfaces: same bg, just a border + slight inner shadow */
+/* Elementos “panel/caja”: monocromo + borde sutil */
 html[saved-theme="dark"] pre,
 html[saved-theme="dark"] .callout,
 html[saved-theme="dark"] .toc,
@@ -215,44 +184,25 @@ html[saved-theme="dark"] .popover {
   background: var(--mono-bg) !important;
   border: 1px solid var(--mono-border) !important;
   border-radius: 10px;
-  box-shadow: inset 0 0 0 1px rgba(var(--light2_x), 0.03);
 }
 
-/* Inline code + code blocks: still monochrome, slightly lifted */
-html[saved-theme="dark"] code {
-  background: var(--code-bg) !important;
-  color: var(--mono-text) !important;
-  border: 1px solid var(--mono-border) !important;
-  border-radius: 6px;
-  padding: 0.1em 0.25em;
-}
-html[saved-theme="dark"] pre {
-  padding: 0.9rem 1rem;
-}
-
-/* Text hierarchy */
-html[saved-theme="dark"] p,
-html[saved-theme="dark"] li {
-  color: var(--mono-text) !important;
-}
+/* Metas y texto secundario */
 html[saved-theme="dark"] .content-meta,
 html[saved-theme="dark"] .meta,
 html[saved-theme="dark"] .breadcrumb,
 html[saved-theme="dark"] .toc a {
-  color: var(--mono-text-muted) !important;
+  color: var(--mono-muted) !important;
 }
 
-/* Links (monochrome) */
+/* Links */
 html[saved-theme="dark"] a {
-  color: rgba(var(--light2_x), 0.92) !important;
-  text-decoration: none;
+  color: rgba(var(--light2_x), 0.92);
 }
 html[saved-theme="dark"] a:hover {
-  color: rgba(var(--light2_x), 1) !important;
-  text-decoration: underline;
+  color: rgba(var(--light2_x), 1);
 }
 
-/* Headings WITH color (still monochrome UI) */
+/* Mantener headings con color incluso en dark */
 html[saved-theme="dark"] h1 { color: var(--red) !important; }
 html[saved-theme="dark"] h2 { color: var(--yellow) !important; }
 html[saved-theme="dark"] h3 { color: var(--green) !important; }
@@ -260,46 +210,42 @@ html[saved-theme="dark"] h4 { color: var(--purple) !important; }
 html[saved-theme="dark"] h5 { color: var(--frost0) !important; }
 html[saved-theme="dark"] h6 { color: var(--frost2) !important; }
 
-/* =========================================
-   Fix: espacio entre columnas + padding real
-   ========================================= */
+/* =========================================================
+   6) FIX REAL: separar el center de los bordes laterales
+   (Quartz dibuja divisores, pero lo que necesitas es “aire”)
+   ========================================================= */
 
-/* 1) Separación entre columnas (grid o flex) */
-#quartz-body {
-  gap: 2.5rem !important;          /* <- esto sí funciona en grid/flex */
-  column-gap: 2.5rem !important;   /* por si acaso */
+/* Padding lateral del contenido central */
+#quartz-body .center {
+  padding-left: 2.25rem !important;
+  padding-right: 2.25rem !important;
 }
 
-/* 2) Que el contenido no quede pegado a los bordes del center */
-#quartz-body > .center {
-  padding-left: 2.2rem !important;
-  padding-right: 2.2rem !important;
+/* Asegurar que el contenido real respete el padding */
+#quartz-body .center > .page-header,
+#quartz-body .center > article {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-/* Quartz a veces no aplica padding al contenedor, así que lo forzamos en lo que se ve */
-#quartz-body > .center > .page-header,
-#quartz-body > .center > article {
-  padding-left: 2.2rem !important;
-  padding-right: 2.2rem !important;
+/* También da “aire” a sidebars (para que no se sienta pegado al divisor) */
+#quartz-body .left.sidebar {
+  padding-right: 1.25rem !important;
+}
+#quartz-body .right.sidebar {
+  padding-left: 1.25rem !important;
 }
 
-/* 3) Si el borde lo tiene el sidebar, igual dejamos aire */
-#quartz-body > .left.sidebar {
-  padding-right: 1.2rem !important;
-}
-#quartz-body > .right.sidebar {
-  padding-left: 1.2rem !important;
-}
-
-/* Desktop grande: un poquito más de aire */
+/* Desktop grande: más espacio */
 @media (min-width: 1200px) {
-  #quartz-body {
-    gap: 3rem !important;
-  }
-  #quartz-body > .center,
-  #quartz-body > .center > .page-header,
-  #quartz-body > .center > article {
+  #quartz-body .center {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
+  }
+  #quartz-body .left.sidebar {
+    padding-right: 1.75rem !important;
+  }
+  #quartz-body .right.sidebar {
+    padding-left: 1.75rem !important;
   }
 }
