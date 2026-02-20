@@ -1,9 +1,9 @@
 ---
-title: WS - Asistente de instalación GUI
+title: Asistente de instalación GUI
 description: Al iniciar sesión en un nuevo servidor, el panel de control de Server Manager presenta una lista de inicio rápido con cinco elementos de acción.
 ---
 
-## Preparación Inicial en Server Manager
+## Preparación Iniciar en Server Manager
 
 Al iniciar sesión en un nuevo servidor, el panel de control de **Server Manager** presenta una lista de inicio rápido con cinco elementos de acción.
 
@@ -25,7 +25,7 @@ Existen dos formas de iniciar el proceso para agregar roles y características:
 
 2. Hacer clic en el menú **Manage** (Administrar) en la barra superior y seleccionar **Add Roles and Features**.
 
-![Figure 2.9: Adding roles](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781837029914/files/Images/B32320_02_09.png)
+![[Pasted image 20260220184625.png]]
 
 Tras omitir la pantalla inicial de resumen haciendo clic en **Next**, se presentan las opciones de tipo de instalación.
 
@@ -36,7 +36,7 @@ El asistente ofrece dos rutas principales:
 * **Role-based or feature-based installation:** Es la opción estándar para la mayoría de los roles y características.
 * **Remote Desktop Services installation (RDS):** Aunque RDS es un rol, es funcionalmente tan distinto que invoca su propio asistente especializado. Si no se selecciona aquí, no se encontrarán las opciones de RDS más adelante.
 
-![Figure 2.10: Selecting Role-based or feature-based installation for most roles](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781837029914/files/Images/B32320_02_10.png)
+![[Pasted image 20260220184636.png]]
 
 ---
 
@@ -55,7 +55,7 @@ La pantalla **Server Selection** permite determinar dónde se instalará el rol.
 * **Instalación Remota:** Si Server Manager está configurado para monitorear otros servidores en la red, se puede instalar el rol en una máquina remota.
 * **Instalación en Disco Virtual (VHDX):** Permite inyectar roles o características directamente en un archivo de disco duro virtual, incluso si la máquina virtual no está en ejecución.
 
-![Figure 2.11: Selecting the destination server](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781837029914/files/Images/B32320_02_11.png)
+![[Pasted image 20260220184645.png]]
 
 ---
 
@@ -67,11 +67,11 @@ En la lista de roles disponibles, se puede marcar la casilla del servicio desead
 
 * **Instalación Múltiple:** No es necesario ejecutar el asistente varias veces; se pueden marcar varios roles a la vez para que se instalen conjuntamente.
 
-![Figure 2.13: Role selection](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781837029914/files/Images/B32320_02_13.png)
+![[Pasted image 20260220184654.png]]
 
 * **Dependencias (Ventana Emergente):** Algunos roles (como AD DS) requieren características adicionales. Al marcarlos, aparecerá un cuadro de diálogo; se debe hacer clic en **Add Features** para que el sistema agregue automáticamente los componentes necesarios.
 
-![Figure 2.12: Additional features](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781837029914/files/Images/B32320_02_12.png)
+![[Pasted image 20260220184705.png]]
 
 ## 5. Gestión de Características (Features)
 
@@ -93,5 +93,5 @@ Una vez finalizado el proceso técnico de instalación:
 * **DHCP:** Requiere configuraciones adicionales para comenzar a entregar direcciones.
 * Los enlaces rápidos en el área de notificaciones permiten acceder directamente a estos procesos de configuración post-despliegue.
 
-![Figure 2.14: Post-deployment Configuration](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781837029914/files/Images/B32320_02_14.png)
+![[Pasted image 20260220184719.png]]
 
