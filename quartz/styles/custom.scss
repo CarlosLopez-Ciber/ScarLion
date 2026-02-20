@@ -261,24 +261,45 @@ html[saved-theme="dark"] h5 { color: var(--frost0) !important; }
 html[saved-theme="dark"] h6 { color: var(--frost2) !important; }
 
 /* =========================================
-   Layout spacing improvements
+   Fix: espacio entre columnas + padding real
    ========================================= */
 
-/* Espacio entre columnas */
+/* 1) Separación entre columnas (grid o flex) */
 #quartz-body {
-  column-gap: 2.5rem !important;   /* espacio entre sidebar / center / right */
+  gap: 2.5rem !important;          /* <- esto sí funciona en grid/flex */
+  column-gap: 2.5rem !important;   /* por si acaso */
 }
 
-/* Margen interno del contenido central */
-.center {
-  padding-left: 2rem;
-  padding-right: 2rem;
+/* 2) Que el contenido no quede pegado a los bordes del center */
+#quartz-body > .center {
+  padding-left: 2.2rem !important;
+  padding-right: 2.2rem !important;
 }
 
-/* Un poco más de aire en desktop */
+/* Quartz a veces no aplica padding al contenedor, así que lo forzamos en lo que se ve */
+#quartz-body > .center > .page-header,
+#quartz-body > .center > article {
+  padding-left: 2.2rem !important;
+  padding-right: 2.2rem !important;
+}
+
+/* 3) Si el borde lo tiene el sidebar, igual dejamos aire */
+#quartz-body > .left.sidebar {
+  padding-right: 1.2rem !important;
+}
+#quartz-body > .right.sidebar {
+  padding-left: 1.2rem !important;
+}
+
+/* Desktop grande: un poquito más de aire */
 @media (min-width: 1200px) {
-  .center {
-    padding-left: 3rem;
-    padding-right: 3rem;
+  #quartz-body {
+    gap: 3rem !important;
+  }
+  #quartz-body > .center,
+  #quartz-body > .center > .page-header,
+  #quartz-body > .center > article {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
   }
 }
