@@ -58,8 +58,6 @@ PORT   STATE SERVICE VERSION
 
 Al acceder a la dirección IP `http://172.16.201.128` a través de un navegador web, se encontró una página con un único mensaje, reforzando la idea inicial de simplicidad:
 
-![[Pasted image 20250727160201.png]]
-
 > "Dont Overthink. Really, Its simple."
 
 Por lo que su traducción al español sería algo como esto:
@@ -167,8 +165,3 @@ cat root.txt
 ```
 
 La lectura de estos archivos finalizó exitosamente el desafío CTF.
-
-
-
-
-WriteUp para el CTF "Gift" de HackMyVM. Explotamos SSH con Hydra, utilizando pistas simples de un servicio web.
