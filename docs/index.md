@@ -2,13 +2,13 @@
 title: Welcome to Quartz 4
 ---
 
-Quartz is a fast, batteries-included static-site generator that transforms Markdown content into fully functional websites. Thousands of students, developers, and teachers are [[showcase|already using Quartz]] to publish personal notes, websites, and [digital gardens](https://jzhao.xyz/posts/networked-thought) to the web.
+Quartz es un generador de sitios estáticos rápido y con todo incluido (batteries-included) que transforma contenido en Markdown en sitios web completamente funcionales. Miles de estudiantes, desarrolladores y docentes ya están usando Quartz para publicar notas personales, sitios web y jardines digitales en la web.
 
-## 🪴 Get Started
+## 🪴 Comenzar
 
-Quartz requires **at least [Node](https://nodejs.org/) v22** and `npm` v10.9.2 to function correctly. Ensure you have this installed on your machine before continuing.
+Quartz requiere **al menos Node v22** y `npm` v10.9.2 para funcionar correctamente. Asegúrate de tenerlos instalados en tu equipo antes de continuar.
 
-Then, in your terminal of choice, enter the following commands line by line:
+Luego, en tu terminal preferida, introduce los siguientes comandos línea por línea:
 
 ```shell
 git clone https://github.com/jackyzha0/quartz.git
@@ -17,30 +17,44 @@ npm i
 npx quartz create
 ```
 
-This will guide you through initializing your Quartz with content. Once you've done so, see how to:
+Esto te guiará en la inicialización de Quartz con tu contenido. Una vez hecho esto, puedes aprender cómo:
 
-1. [[authoring content|Writing content]] in Quartz
-2. [[configuration|Configure]] Quartz's behaviour
-3. Change Quartz's [[layout]]
-4. [[build|Build and preview]] Quartz
-5. Sync your changes with [[setting up your GitHub repository|GitHub]]
-6. [[hosting|Host]] Quartz online
+1. Escribir contenido en Quartz
+    
+2. Configurar el comportamiento de Quartz
+    
+3. Cambiar el diseño (layout) de Quartz
+    
+4. Compilar y previsualizar Quartz
+    
+5. Sincronizar tus cambios con GitHub
+    
+6. Publicar (hostear) Quartz en línea
+    
 
-If you prefer instructions in a video format you can try following Nicole van der Hoeven's
-[video guide on how to set up Quartz!](https://www.youtube.com/watch?v=6s6DT1yN4dw&t=227s)
+Si prefieres instrucciones en formato de video, puedes seguir la guía en video de Nicole van der Hoeven sobre cómo configurar Quartz.
 
-## 🔧 Features
+---
 
-- [[Obsidian compatibility]], [[full-text search]], [[graph view]], [[wikilinks|wikilinks, transclusions]], [[backlinks]], [[features/Latex|Latex]], [[syntax highlighting]], [[popover previews]], [[Docker Support]], [[i18n|internationalization]], [[comments]] and [many more](./features/) right out of the box
-- Hot-reload on configuration edits and incremental rebuilds for content edits
-- Simple JSX layouts and [[creating components|page components]]
-- [[SPA Routing|Ridiculously fast page loads]] and tiny bundle sizes
-- Fully-customizable parsing, filtering, and page generation through [[making plugins|plugins]]
+## 🔧 Características
 
-For a comprehensive list of features, visit the [features page](./features/). You can read more about the _why_ behind these features on the [[philosophy]] page and a technical overview on the [[architecture]] page.
+- Compatibilidad con Obsidian, búsqueda de texto completo, vista de grafo, wikilinks y transclusiones, backlinks, soporte para LaTeX, resaltado de sintaxis, vistas previas emergentes (popover), soporte para Docker, internacionalización (i18n), comentarios y muchas más funciones listas para usar.
+    
+- Recarga en caliente (hot-reload) al editar la configuración y reconstrucciones incrementales al modificar el contenido.
+    
+- Diseños simples en JSX y componentes de página.
+    
+- Carga de páginas extremadamente rápida (SPA Routing) y tamaños de paquete muy pequeños.
+    
+- Análisis, filtrado y generación de páginas completamente personalizables mediante plugins.
+    
 
-### 🚧 Troubleshooting + Updating
+Para una lista completa de características, visita la página de funcionalidades. Puedes leer más sobre el propósito detrás de estas características en la página de filosofía y encontrar una descripción técnica en la página de arquitectura.
 
-Having trouble with Quartz? Try searching for your issue using the search feature. If you haven't already, [[upgrading|upgrade]] to the newest version of Quartz to see if this fixes your issue.
+---
 
-If you're still having trouble, feel free to [submit an issue](https://github.com/jackyzha0/quartz/issues) if you feel you found a bug or ask for help in our [Discord Community](https://discord.gg/cRFFHYye7t).
+### 🚧 Solución de problemas + Actualización
+
+¿Tienes problemas con Quartz? Intenta buscar tu problema utilizando la función de búsqueda. Si aún no lo has hecho, actualiza a la versión más reciente de Quartz para verificar si eso soluciona el inconveniente.
+
+Si el problema persiste, puedes enviar un reporte (issue) en GitHub si crees que encontraste un error, o solicitar ayuda en la comunidad de Discord.

@@ -1,17 +1,24 @@
-# Quartz v4
+# Sobre mí 👋
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+Hola, me llamo Jesús.
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+Bienvenido a este espacio donde documento mi viaje académico.
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+### 🚀 ¿Quién soy?
+Soy un estudiante apasionado por entender cómo funcionan las cosas desde su núcleo más profundo. Actualmente curso dos carreras de manera simultánea:
+* **Computación Científica:** En la [Universidad Nacional Mayor de San Marcos](https://www.unmsm.edu.pe/).
+* **Ciberseguridad:** En [IDAT](https://www.idat.edu.pe/). 
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+Mi trayectoria se define por la curiosidad autodidacta y la búsqueda constante de retos técnicos. Mientras que la Computación Científica me brinda las herramientas para modelar problemas complejos y entender la lógica matemática subyacente, la Ciberseguridad me permite aplicar ese rigor en entornos dinámicos y críticos.
 
-## Sponsors
+### 🧠 Mi Filosofía
+Me considero un **autodidacta** por naturaleza. Creo firmemente que la universidad te da las bases, pero la verdadera maestría se forja investigando por cuenta propia, rompiendo código y resolviendo problemas reales.
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+### 🎯 El Objetivo
+Este sitio funciona como un **registro abierto** de mi aprendizaje. Más que un blog técnico, es la documentación en tiempo real de mis estudios en Computación Científica y Ciberseguridad.
+
+**La información, en la medida de lo posible, debe ser libre**. Publico mis notas, errores y descubrimientos sin barreras, con la esperanza de que le sean útiles a alguien más en su propio camino. Si algo de lo que encuentras aquí te sirve, el propósito de este repositorio se habrá cumplido.
+
+
+---
+*Si encuentras un error en mi documentación, ¡házmelo saber! El aprendizaje es colaborativo.*

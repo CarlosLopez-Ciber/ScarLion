@@ -11,8 +11,8 @@ Bienvenido a este espacio donde documento mi viaje académico.
 
 ### 🚀 ¿Quién soy?
 Soy un estudiante apasionado por entender cómo funcionan las cosas desde su núcleo más profundo. Actualmente curso dos carreras de manera simultánea:
-* **[[Computación Científica]]:** En la [Universidad Nacional Mayor de San Marcos](https://www.unmsm.edu.pe/).
-* **Ciberseguridad:** En el instituto [IDAT](https://www.idat.edu.pe/). 
+* **Computación Científica:** En la [Universidad Nacional Mayor de San Marcos](https://www.unmsm.edu.pe/).
+* **Ciberseguridad:** En [IDAT](https://www.idat.edu.pe/). 
 
 Mi trayectoria se define por la curiosidad autodidacta y la búsqueda constante de retos técnicos. Mientras que la Computación Científica me brinda las herramientas para modelar problemas complejos y entender la lógica matemática subyacente, la Ciberseguridad me permite aplicar ese rigor en entornos dinámicos y críticos.
 
