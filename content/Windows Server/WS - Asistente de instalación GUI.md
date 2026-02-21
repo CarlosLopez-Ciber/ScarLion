@@ -38,15 +38,12 @@ El asistente ofrece dos rutas principales:
 
 ![[Pasted image 20260220184636.png]]
 
----
 
 > ##### Requisitos Específicos para Controladores de Dominio (DC)
 > Si el objetivo es instalar **Active Directory Domain Services (AD DS)** para crear un controlador de dominio, se deben cumplir los siguientes requisitos previos antes de continuar:
 > - **Static IP:** Asignar una dirección IP estática. Es fundamental que un DC mantenga una IP constante.
 >  - **DNS:** Definir un servidor DNS en la NIC. En laboratorios o redes nuevas, se puede usar la dirección de bucle invertido `127.0.0.1` si este será el primer servidor DNS.
 >  - **Hostname:** Definir el nombre definitivo del servidor. Renombrar un servidor después de convertirlo en DC no tiene soporte y causa problemas graves.
-
----
 
 ## 3. Selección del Servidor de Destino
 
@@ -56,8 +53,6 @@ La pantalla **Server Selection** permite determinar dónde se instalará el rol.
 * **Instalación en Disco Virtual (VHDX):** Permite inyectar roles o características directamente en un archivo de disco duro virtual, incluso si la máquina virtual no está en ejecución.
 
 ![[Pasted image 20260220184645.png]]
-
----
 
 ## 4. Selección de Roles y Características
 
