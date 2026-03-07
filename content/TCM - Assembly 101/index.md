@@ -12,3 +12,4 @@ En esta sección se encontrarán mis notas personales del curso Assemble 101 de 
 - [[Assembly 101 - Ejercicio 1]]
 - [[Assembly 101 - Ejercicio 2]]
 - [[Assembly 101 - Interrupciones]]
+- [[Assembly 101 - Segmentación De Memoria]]
