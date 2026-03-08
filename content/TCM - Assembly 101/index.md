@@ -13,3 +13,6 @@ En esta sección se encontrarán mis notas personales del curso Assemble 101 de 
 - [[Assembly 101 - Ejercicio 2]]
 - [[Assembly 101 - Interrupciones]]
 - [[Assembly 101 - Segmentación De Memoria]]
+- [[Assembly 101 - Transferencia de Datos en Memoria x86]]
+- [[Aseembly 101 - Endianness]]
+- [[Assembly 101 - Directivas de Definición de Datos]]
