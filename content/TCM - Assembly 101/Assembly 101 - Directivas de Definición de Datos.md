@@ -59,7 +59,7 @@ A diferencia de la instrucción `MOV`, que requiere ciclos de reloj del procesad
 
 Se utiliza para reservar y definir uno o más bytes de 8 bits. Es la directiva estándar para definir caracteres individuales o cadenas de texto.
 
-- **Sintaxis:** `etiqueta db <valor>`
+- **Sintaxis:** `db <valor>`
     
 - **Ejemplo:** `db 0xAB` reserva un byte con el valor hexadecimal $AB$.
     
@@ -68,7 +68,7 @@ Se utiliza para reservar y definir uno o más bytes de 8 bits. Es la directiva e
 
 Se utiliza para definir palabras de 16 bits.
 
-- **Sintaxis:** `etiqueta dw <valor>`
+- **Sintaxis:** `dw <valor>`
     
 - **Ejemplo:** `dw 0xABCD` reserva dos bytes consecutivos. Debido a la arquitectura _Little-Endian_ del 8086, el valor se almacenará en memoria como `CD AB`.
     
