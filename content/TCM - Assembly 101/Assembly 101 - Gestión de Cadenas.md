@@ -1,4 +1,7 @@
-# Gestión de Salida de Cadenas mediante Interrupciones de BIOS en Arquitectura 8086
+---
+title: Gestión de Cadenas
+description: La programación en lenguaje ensamblador para la arquitectura Intel 8086 requiere un conocimiento profundo de la gestión de interrupciones de software y la manipulación directa de registros. Para la visualización de datos en pantalla, el estándar histórico se basa en los servicios proporcionados por la interrupción de video del BIOS (INT 10h).
+---
 
 La programación en lenguaje ensamblador para la arquitectura Intel 8086 requiere un conocimiento profundo de la gestión de interrupciones de software y la manipulación directa de registros. Para la visualización de datos en pantalla, el estándar histórico se basa en los servicios proporcionados por la interrupción de video del BIOS (**INT 10h**).
 
@@ -43,7 +46,7 @@ El siguiente programa ilustra la disposición de datos y la secuencia de control
 
 La directiva `DB` (Define Byte) se utiliza para asignar espacio en memoria para datos estáticos. El uso de etiquetas (_labels_) permite al ensamblador calcular las direcciones de memoria necesarias para los punteros de base.
 
-```
+```asm
 ; Programa de salida para arquitectura 8086
 ; Objetivo: Emitir la cadena "Hello World!" en pantalla
 
