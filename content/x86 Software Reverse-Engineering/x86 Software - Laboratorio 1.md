@@ -47,5 +47,5 @@
 
 - Se logra visualizar el código en su totalidad.
 
-![[JetBrains_dotPeek.png]]
+![[JetBrains_dotPeek 1.png]]
 

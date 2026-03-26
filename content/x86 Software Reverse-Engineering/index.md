@@ -12,10 +12,17 @@ En esta sección se podrán encontrar mis notas personales en la lectura del lib
 ## Tabla de Contenido
 
 > [[x86 Software - Descripción del libro]]
+
+### Capítulo 1
 - [[x86 Software - Conceptos de Compilación y Descompilación]]
 - [[x86 Software - Laboratorio 1]]
+
+### Capítulo 2
 - [[x86 Software - Arquitectura de Computadoras]]
 - [[x86 Software - Conjunto de Instrucciones]]
-- [[x86 Software - Introduccion a la Arquitectura x86]]
+- [[x86 Software - Introducción a la Arquitectura x86]]
 - [[x86 Software - Registros]]
 - [[x86 Software - Acceso a Memoria]]
+
+### Capítulo 3
+- [[x86 Software - Instrucciones]]

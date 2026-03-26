@@ -1,5 +1,5 @@
 ---
-title: Assembly 101
+title: TCM - Assembly 101
 description: En esta sección se encontrarán mis notas personales del curso Assemble 101 de la plataforma TCM Security
 ---
 
@@ -32,3 +32,5 @@ En esta sección se encontrarán mis notas personales del curso  [Assemble 101](
 - [[Assembly 101 - Directivas de Definición de Datos]]
 - [[Assembly 101 - Gestión de Cadenas]]
 - [[Assembly 101 - Punteros]]
+- [[Assemble 101 - Stacks]]
+- 

@@ -17,7 +17,7 @@ Cada registro de 16 bits (denominado **Word** o palabra) es divisible en dos sec
     
 - **L (Low):** Los 8 bits inferiores (el byte menos significativo).
 
-![[2026-03-04_12-22.png]]
+![[2026-03-04_12-22 1.png]]
 
 
 ---

@@ -86,18 +86,31 @@ Es imperativo considerar que en arquitecturas de 16 bits como la 8086, el intent
 
 
 ```asm
-; Program to demonstrate pointers on the 8086
+; Programa para demostrar punteros en el 8086
+db [0x01, 0xa]                  ; añadiendo datos al inicio del programa para que los punteros no apunten a cero
 
-db [0x01, 0xa]                  ; adding data to start of program to make pointers not point at zer0
 number: dw 0x1234
-string: db "This is a string"   
+
+string: db "This is a string"
+
 start:
+
 mov word [0x02], 0xabcd
-mov BX, 0x02                    ; creating a pointer in BX pointing to memory address 0x02
-mov AX, word [BX]               ; dereferncing pointer BX to mov the contents of the memory address pointed to by BX
-mov CX, word [0x02]             ; dereferncing hard coded pointer to mov the contents of a memory address into CX
+
+mov BX, 0x02                    ; creando un puntero en BX que apunta a la dirección de memoria 0x02
+
+mov AX, word [BX]               ; desreferenciando el puntero BX para mover el contenido de la dirección de memoria apuntada por BX
+
+mov CX, word [0x02]             ; desreferenciando un puntero codificado directamente para mover el contenido de una dirección de memoria a CX
+
 lea AX, word number
+
 mov DX, offset number
+
 mov BX, offest string
-mov AX, word[BX, 3]             ; pointer arithmetic, add 3 to pointer address and then dereference. 
+
+mov AX, word[BX, 3]             ; aritmética de punteros, suma 3 a la dirección del puntero y luego desreferencia.
 ```
+
+
+
