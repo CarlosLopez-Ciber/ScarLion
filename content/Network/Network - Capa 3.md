@@ -98,9 +98,7 @@ Utiliza mensajes ICMP _Echo Request_ y _Echo Reply_. Verifica si un host remoto 
 
 **Comando:** `ping [dirección_IP_o_dominio]`
 
-Bash
-
-```
+```bash
 C:\> ping 8.8.8.8
 
 Haciendo ping a 8.8.8.8 con 32 bytes de datos:
@@ -116,9 +114,7 @@ Comando en Windows: tracert [destino]
 
 Comando en Linux/macOS: traceroute [destino]
 
-Bash
-
-```
+```bash
 C:\> tracert google.com
 
 Traza a la dirección google.com [142.250.78.142]

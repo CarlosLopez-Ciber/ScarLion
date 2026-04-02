@@ -10,8 +10,8 @@ description: En esta sección adjuntaré mis notas personales sobre mis estudios
 - [[Network - Modelos de Red]]
 - [[Network - Geografía de Red]]
 - [[Network - Topologías de Redes Cableadas]]
-- [[Network - Topología de Redes Inalambricas]]
-- [[Network - DataCenter]]
+- [[Network - Topología de Redes Inalámbricas]]
+- [[Network - Data Center]]
 
 ### Modelo OSI
 - [[Network - Modelo OSI]]

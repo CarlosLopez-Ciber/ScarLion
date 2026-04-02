@@ -1,7 +1,5 @@
 # Topologías de Red
 
-¡Hola! En esta lección, vamos a sumergirnos en un tema crucial para el CompTIA Network+: las **topologías de red cableadas**.
-
 Una topología de red se refiere a la disposición de diferentes elementos (como enlaces, nodos, clientes y servidores) que componen una red informática. Es fundamental que entiendas los diferentes tipos de topologías cuando intentes diseñar una infraestructura de red eficiente y resiliente.
 
 Pero antes de cubrir los seis tipos de topologías, primero debemos entender cómo se documentan en nuestros diagramas de red.

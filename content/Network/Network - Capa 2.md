@@ -113,7 +113,7 @@ Para el examen Network+ y la resolución de problemas en el mundo real, es funda
 En Windows (Command Prompt):
 
 El comando ipconfig /all muestra la configuración detallada. Busca la línea etiquetada como "Dirección física" (Physical Address).
-```PowerShell
+```powershell
 C:\> ipconfig /all
 
 Adaptador de Ethernet Ethernet:
@@ -126,7 +126,7 @@ En Linux (Terminal):
 
 Dependiendo de la distribución, se utiliza ip addr (moderno) o ifconfig (heredado). Busca el valor junto a "link/ether" o "HWaddr".
 
-```Bash
+```bash
 $ ip addr show eth0
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ...
     link/ether d2:51:f1:3a:9c:01 brd ff:ff:ff:ff:ff:ff
@@ -138,7 +138,7 @@ Para ver cómo tu computadora asigna direcciones IP (Capa 3) a direcciones MAC (
 
 **Comando:** `arp -a`
 
-```DOS
+```dos
 Interfaz: 192.168.1.15 --- 0x3
   Dirección de Internet      Dirección física      Tipo
   192.168.1.1               c4-6e-1f-2a-3b-4c     dinámico

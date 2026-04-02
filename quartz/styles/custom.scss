@@ -67,27 +67,46 @@
 /* =========================================================
    2) Encabezados Aurora (Red, Orange, Yellow, Green, Purple)
    ========================================================= */
-h1 { color: var(--red) !important; }
-h2 { color: var(--yellow) !important; }
-h3 { color: var(--green) !important; }
-h4 { color: var(--purple) !important; }
-h5 { color: var(--frost0) !important; }
-h6 { color: var(--frost2) !important; }
+h1 {
+  color: var(--red) !important;
+}
+
+h2 {
+  color: var(--yellow) !important;
+}
+
+h3 {
+  color: var(--green) !important;
+}
+
+h4 {
+  color: var(--purple) !important;
+}
+
+h5 {
+  color: var(--frost0) !important;
+}
+
+h6 {
+  color: var(--frost2) !important;
+}
 
 /* =========================================================
    3) Obsidian Nord Components and Details
    ========================================================= */
 html[saved-theme="dark"] {
-  .popover, 
+
+  .popover,
   .callout,
   .search {
-    background-color: var(--dark1) !important; 
+    background-color: var(--dark1) !important;
     border: 1px solid var(--dark2) !important;
   }
 }
 
 html[saved-theme="light"] {
-  .popover, 
+
+  .popover,
   .callout,
   .search {
     background-color: var(--light2) !important;
@@ -110,7 +129,345 @@ a:hover {
 input[type=checkbox] {
   border: 1px solid var(--frost0) !important;
 }
+
 input[type=checkbox]:checked {
   background-color: var(--frost0) !important;
   border-color: var(--frost0) !important;
+}
+
+/* =========================================================
+   4) Estilos profesionales para tablas en artículos
+   ========================================================= */
+
+/* Anula el contenedor de Quartz que fuerza scroll horizontal */
+article .table-container {
+  overflow-x: visible !important;
+  overflow: visible !important;
+}
+
+/* Anula el min-width fijo por celda que impide que la tabla se comprima */
+article .table-container>table th,
+article .table-container>table td {
+  min-width: 0 !important;
+}
+
+/* Centrado y padding de celdas y encabezados */
+article table th,
+article table td {
+  vertical-align: middle !important;
+  text-align: center !important;
+  padding: 10px 14px !important;
+}
+
+/* Encabezados con color de acento Nord */
+article table th {
+  background-color: rgba(var(--dark2_x), 0.6) !important;
+  color: var(--frost1) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  font-size: 0.78em !important;
+  border-bottom: 2px solid var(--frost3) !important;
+}
+
+/* Filas con alternancia sutil (zebra striping) */
+article table tbody tr:nth-child(even) {
+  background-color: rgba(var(--dark1_x), 0.4) !important;
+}
+
+article table tbody tr:hover {
+  background-color: rgba(var(--frost3_x), 0.08) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+/* Bordes de tabla */
+article table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  border: 1px solid rgba(var(--dark3_x), 0.8) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+}
+
+article table td,
+article table th {
+  border: 1px solid rgba(var(--dark3_x), 0.5) !important;
+}
+
+/* Control del tamaño de portadas de libros (responsivo) */
+article table td img {
+  max-width: 80px !important;
+  max-height: 120px !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 6px !important;
+  display: block !important;
+  margin: 0 auto !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+article table td img:hover {
+  transform: scale(1.06) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Ancho primera columna (Portadas) */
+article table th:first-child,
+article table td:first-child {
+  width: 90px !important;
+  min-width: 0 !important;
+}
+
+/* Enlaces dentro de la tabla */
+article table td a {
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  color: var(--frost1) !important;
+  transition: color 0.2s ease !important;
+}
+
+article table td a:hover {
+  color: var(--frost0) !important;
+  text-decoration: underline !important;
+}
+
+/* =========================================================
+   5) Estilos por lenguaje en bloques de código (Shiki/rehype-pretty-code)
+   ========================================================= */
+
+/* Colores de acento por lenguaje */
+:root {
+  --lang-powershell: #2671be;
+  --lang-bash: #4eaa25;
+  --lang-python: #3572a5;
+  --lang-js: #f7df1e;
+  --lang-ts: #3178c6;
+  --lang-json: #8bbceb;
+  --lang-yaml: #cb171e;
+  --lang-css: #563d7c;
+  --lang-scss: #c6538c;
+  --lang-sql: #e38c00;
+  --lang-rust: #dea584;
+  --lang-go: #00acd7;
+  --lang-java: #b07219;
+  --lang-c: #555555;
+  --lang-cpp: #f34b7d;
+  --lang-html: #e34c26;
+  --lang-docker: #0db7ed;
+  --lang-default: #88c0d0;
+  /* frost1 */
+}
+
+/* ── Base: contenedor figura ───────────────────────────── */
+figure[data-rehype-pretty-code-figure] {
+  position: relative;
+  border-left: 3px solid var(--lang-default);
+  border-radius: 0 8px 8px 0;
+
+  /* Badge de lenguaje (esquina superior derecha) */
+  &::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 10px;
+    font-family: var(--codeFont);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 0 7px 0 6px;
+    background-color: var(--lang-default);
+    color: #1a1a1a;
+    opacity: 0.92;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* ── Acento + badge por lenguaje ───────────────────────── */
+/* PowerShell */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="powershell"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="ps1"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="ps"]) {
+  border-left-color: var(--lang-powershell) !important;
+
+  &::before {
+    background-color: var(--lang-powershell);
+    color: #fff;
+  }
+}
+
+/* Bash / sh / shell */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="bash"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="sh"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="shell"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="zsh"]) {
+  border-left-color: var(--lang-bash) !important;
+
+  &::before {
+    background-color: var(--lang-bash);
+    color: #fff;
+  }
+}
+
+/* Python */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="python"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="py"]) {
+  border-left-color: var(--lang-python) !important;
+
+  &::before {
+    background-color: var(--lang-python);
+    color: #fff;
+  }
+}
+
+/* JavaScript */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="javascript"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="js"]) {
+  border-left-color: var(--lang-js) !important;
+
+  &::before {
+    background-color: var(--lang-js);
+    color: #1a1a1a;
+  }
+}
+
+/* TypeScript */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="typescript"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="ts"]) {
+  border-left-color: var(--lang-ts) !important;
+
+  &::before {
+    background-color: var(--lang-ts);
+    color: #fff;
+  }
+}
+
+/* JSON */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="json"]) {
+  border-left-color: var(--lang-json) !important;
+
+  &::before {
+    background-color: var(--lang-json);
+    color: #1a1a1a;
+  }
+}
+
+/* YAML */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="yaml"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="yml"]) {
+  border-left-color: var(--lang-yaml) !important;
+
+  &::before {
+    background-color: var(--lang-yaml);
+    color: #fff;
+  }
+}
+
+/* CSS */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="css"]) {
+  border-left-color: var(--lang-css) !important;
+
+  &::before {
+    background-color: var(--lang-css);
+    color: #fff;
+  }
+}
+
+/* SCSS */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="scss"]) {
+  border-left-color: var(--lang-scss) !important;
+
+  &::before {
+    background-color: var(--lang-scss);
+    color: #fff;
+  }
+}
+
+/* SQL */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="sql"]) {
+  border-left-color: var(--lang-sql) !important;
+
+  &::before {
+    background-color: var(--lang-sql);
+    color: #1a1a1a;
+  }
+}
+
+/* Rust */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="rust"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="rs"]) {
+  border-left-color: var(--lang-rust) !important;
+
+  &::before {
+    background-color: var(--lang-rust);
+    color: #1a1a1a;
+  }
+}
+
+/* Go */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="go"]) {
+  border-left-color: var(--lang-go) !important;
+
+  &::before {
+    background-color: var(--lang-go);
+    color: #fff;
+  }
+}
+
+/* Java */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="java"]) {
+  border-left-color: var(--lang-java) !important;
+
+  &::before {
+    background-color: var(--lang-java);
+    color: #fff;
+  }
+}
+
+/* C */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="c"]) {
+  border-left-color: var(--lang-c) !important;
+
+  &::before {
+    background-color: var(--lang-c);
+    color: #fff;
+  }
+}
+
+/* C++ */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="cpp"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="c++"]) {
+  border-left-color: var(--lang-cpp) !important;
+
+  &::before {
+    background-color: var(--lang-cpp);
+    color: #fff;
+  }
+}
+
+/* HTML */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="html"]) {
+  border-left-color: var(--lang-html) !important;
+
+  &::before {
+    background-color: var(--lang-html);
+    color: #fff;
+  }
+}
+
+/* Dockerfile */
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="dockerfile"]),
+figure[data-rehype-pretty-code-figure]:has(> pre > code[data-language="docker"]) {
+  border-left-color: var(--lang-docker) !important;
+
+  &::before {
+    background-color: var(--lang-docker);
+    color: #fff;
+  }
 }
